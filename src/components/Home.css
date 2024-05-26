@@ -1,0 +1,699 @@
+.mainHome{
+    /* height: 100vh;
+    width: 100vw; */
+    /* background-color: blue; */
+    position: relative;
+  overflow: hidden;
+    
+}
+body{
+    background-color: rgba(226, 226, 226, 0.6);
+}
+.mainHome::before{
+    content: "";
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: black;
+    top: 0;
+    background: url("../assets/lpi.png") no-repeat; 
+    background-size: cover;
+    
+    background-position: center;
+    z-index: -1;
+    /* opacity: 0.7; */
+
+}
+.intro{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+
+}
+.content{
+    width: 50%;
+    height: 50%;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color:white;
+}
+
+.heading{
+    height: 100%;
+    width:63%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    /* background-color: red; */
+}
+.heading a
+{
+   padding: 1rem 3rem;
+   background-color: rebeccapurple;
+   text-decoration: none;
+   color: white;
+   border-radius: 5px;
+}
+.heading h1{
+    font-size: 55px;
+    font-family: "Freeman", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.heading h3{
+    margin: 20px 0;
+    font-family: "Signika", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 50;
+  font-style: normal;
+  font-variation-settings:
+    "GRAD" 0;
+}
+
+.introduction{
+    display: flex;
+    width:90vw;
+    margin: auto;
+    height: 40vh;
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 3rem auto;
+    /* background-color: blue; */
+}
+.introduction h1{
+    font-size: 55px;
+    /* background-color: #fff; */
+    width: 25%;
+    background-color: transparent;
+    color: #6e5677;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    
+}
+
+.intoDiv{
+    width: 40%;
+    /* margin: 3rem 0; */
+    font-size: 20px;
+    /* background-color: rebeccapurple; */
+}
+.intoDiv p{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: oblique;
+}
+
+.boxes{
+    display: flex;
+    width: 80%;
+    /* background-color: #fff; */
+    justify-content: space-evenly;
+    margin: 3rem auto;
+}
+.containers{
+    text-align: center;
+    width: 30%;
+    /* height: 20rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.containers h1{
+    margin:20px 0;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    color: #6e5677;
+
+    font-style: normal;
+}
+.containers p{
+    font-size: 22px;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: oblique;
+}
+.containers i img{
+    width: 40px;
+    height: 40px;
+    margin-bottom: 30px;
+}
+
+.origin{
+    width: 100%;
+    background-color: #fff;
+    margin: 10rem auto;
+    padding: 10rem 0;
+    margin-bottom:0;
+}
+.videoContainer{
+    display: flex;
+    justify-content: center;
+    /* margin: 20rem auto; */
+    align-items: center;
+    width: 90%;
+}
+.video{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+
+}
+.video video{
+    border-radius: 10px;
+    width: 80%;
+}
+.con
+{
+    width: 40%;
+    /* text-align: center; */
+}
+.con h1{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    color: #6e5677;
+    margin: 20px 0;
+    font-style: normal;
+}
+.con p{
+    font-size: 22px;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: oblique;
+    word-wrap: break-word;
+}
+
+.white{
+    /* background-color: #fff;
+    background-color: rgba(226, 226, 226, 0.6); */
+    margin: 5rem 0;
+    /* border-bottom: 1px solid rgb(67, 67, 67); */
+    
+
+}
+.someCourse{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    /* background-color: #fff; */
+    padding-bottom: 1.5rem;
+    align-items: center;
+
+}.someCourse .more{
+    width: 90%;
+    text-align: end;
+    margin: 1rem 0;
+    height: 30px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    text-decoration: none;
+}
+.more i{
+    font-size: 24px;
+    font-weight: normal;
+    color: black;
+}
+/* .someCourse p i img{
+    height: 100%;
+} */
+
+.someCourse h1{
+width: 90%;
+text-align: center;
+margin: 2rem 0;
+font-family: "Josefin Sans", sans-serif;
+font-optical-sizing: auto;
+font-weight: 600;
+color: #6e5677;
+text-align: start;
+font-style: normal;
+}
+.programs{
+    display: flex;
+    width: 90%;
+    /* background-color: red; */
+    justify-content: space-between;
+    /* background-color: #fff; */
+}
+.box-p{
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    height: 23rem;
+    /* justify-conten; */
+    background-color: #fff;
+    /* margin: 0 1.5rem; */
+    text-decoration: none;
+    color: black;
+    overflow: hidden;
+    border-radius: 10px;
+    transition-duration: 0.2s;
+    
+}
+.box-p img{
+    width: 100%;
+    height: 50%;
+}
+.box-detail{
+    width: 100%;
+    height: 50%;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: ; */
+    /* background-color: rgba(200, 200, 200, 0.6);
+    bgc */
+    background-color: #fff;
+
+}
+.box-p:hover{
+    transform: scale(1.03);
+    box-shadow: 1px 1px 10px rgba(52, 51, 51, 0.6);
+}
+.box-detail h3 , .box-detail span{
+    width: 90%;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    
+}
+.box-detail h3{
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+.box-detail span{
+    font-weight: normal;
+}
+
+.signup{
+    width: 100%;
+    /* height: 30rem; */
+    /* background-color: #fff; */
+    display: flex;
+}
+.email{
+    width: 50%;
+    height: 100%;
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.contact {
+    width: 50%;
+    height: 100%;
+    /* background-color: grey; */
+}
+.enterEmail{
+    width: 70%
+    /* background-color: #fff; */
+}
+.enterEmail h1{
+    font-family: "Josefin Sans", sans-serif;
+font-optical-sizing: auto;
+font-weight: 600;
+color: #6c5375;
+/* text-align: start; */
+font-style: normal;
+font-size: 40px;
+margin-bottom: 2rem;
+}
+.enterEmail p{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.enterEmail p input{
+    width: 90%;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #6c5375;
+    height: 100%;
+    background-color: transparent;
+}
+.enterEmail p button{
+    position: relative;
+    /* left:-1rem;
+    top:-1rem; */
+    width: 10%;
+    height: 100%;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    /* border-bottom: 2px solid #6c5375; */
+    background: transparent;
+    right: 7%;
+}
+.contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contactCard{
+    width: 70%;
+    height: 14rem;
+    background-color: #a791af;
+    border-radius: 20px;
+}
+
+.contactCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.contact-options{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+}
+.contact-options h3{
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+}
+
+
+.contact-options span button{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    margin: 0 0.6rem;
+    cursor: pointer;
+}
+.para{
+    width: 90%;
+    font-size: 20px;
+}
+/* c:\Users\anant\OneDrive\Documents\React\practice problemss\Projects\Online course\src\assets */
+@media only screen and (max-width:1700px)
+{
+    .box-p{
+        width: 30%;
+    }
+}
+@media only screen and (max-width:1400px)
+{
+    .enterEmail h1{
+        font-size: 32px;
+    }
+    .programs{
+        width: 100%;
+    }
+    .someCourse h1{
+        width: 100%;
+    }
+    .someCourse p{
+        width: 100%;
+    }
+    .heading{
+        width: 80%;
+    }
+    .intoDiv{
+        width: 60%;
+        /* margin: 3rem 0; */
+        font-size: 20px;
+        /* background-color: rebeccapurple; */
+    }
+    .introduction h1{
+        width: 33%;
+        font-size: 45px;
+    }
+    /* .video{
+        width: 70%;
+    }
+    .con{
+        width: 30%;
+    } */
+    .videoContainer{
+        width: 100%;
+    }
+    
+}
+@media only screen and (max-width:1140px)
+{
+    .signup{
+        flex-direction: column;
+        align-items: center;
+    }
+    .email{
+        width: 100%;
+        margin: 2rem 0;
+    }
+    .contact{
+        width: 100%;
+    }
+    .someCourse{
+        width: 90%;
+    }
+    .box-p{
+        height: 20rem;
+    }
+    .content{
+        width:65%;
+    }
+    .introduction h1{
+        width: 40%;
+        font-size: 40px;
+    }
+    .containers h1{
+       font-size: 25px;
+    }
+    .containers p{
+        font-size: 19px;
+       
+    }
+    .boxes{
+        width: 100%;
+    }
+    .video{
+        width: 90%;
+    }
+    .con{
+        width: 90%;
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+    .videoContainer{
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+}
+@media only screen and (max-width:868px)
+{
+    .someCourse{
+        width: 97%;
+    }
+    .someCourse h1{
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .heading{
+        width: 90%;
+    }
+    .introduction{
+        flex-direction: column;
+        /* background-color: #fff; */
+    }
+  
+    .introduction h1{
+        width: 90%;
+        font-size: 40px;
+    }
+    .intoDiv{
+        width: 90%;
+        /* margin: 3rem 0; */
+        font-size: 20px;
+        /* background-color: rebeccapurple; */
+    }
+}
+@media only screen and (max-width:772px)
+{
+    .programs{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .someCourse h1{
+        font-size: 22px;
+        /* background-color: #fff; */
+    }
+    
+    .box-p{
+        width: 22rem;
+        margin: 1rem 0.5rem;
+
+    }
+    .heading h1{
+        font-size: 45px;
+    }
+    .heading h3{
+        font-size: 20px;
+    }
+    .mainHome::before{
+        height: 70vh;
+    }
+    .intro{
+        height: 70vh;
+    }
+    .boxes{
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .containers{
+        width: 80%;
+        margin: 20px 0;
+    }
+    .containers h1{
+        margin: 10 0;
+    }
+    .containers i img{
+        margin-bottom: 10px;
+    }
+}
+@media only screen and (max-width:650px)
+{
+    .heading h1{
+        font-size: 40px;
+    }
+    .heading h3{
+        font-size: 16px;
+    }
+    .mainHome::before{
+        height: 60vh;
+    }
+    .intro{
+        background-color: rgba(0, 0, 0, 0.3);
+        height: 60vh;
+    }
+    .introduction{
+        margin: 1rem auto;
+        height: 38vh;
+    }
+    .introduction h1{
+        font-size: 30px;
+    }
+    .intoDiv{
+        font-size: 16px;
+    }
+    .con h1{
+        font-size: 30px;
+    }
+    .con p{
+        font-size: 16px;
+    }
+    .video{
+        width: 100%;
+    }
+    .video video{
+        width: 95%;
+    }
+    .origin{
+        padding: 5rem 0;
+    }
+}
+@media only screen and (max-width:650px)
+{
+    .heading h1{
+        font-size: 34px;
+    }
+    .heading h3{
+        font-size: 14px;
+    }
+    .content{
+        width:80%;
+    }
+    .heading a
+{
+   padding: 0.8rem 2.3rem;
+   background-color: rebeccapurple;
+   text-decoration: none;
+   color: white;
+   border-radius: 5px;
+}
+}
+@media only screen and (max-width:560px)
+{
+   .enterEmail{
+width: 93%;
+   }
+   .enterEmail h1{
+    font-size: 28px;
+   }
+   .contactCard{
+    width: 93%;
+    height: 12rem;
+
+   }
+   .contact-options h3{
+    font-size: 25px;
+   }
+   .para span{
+    font-size: 16px;
+   }
+  
+}
+@media only screen and (max-width:500px)
+{
+    .heading{
+        width: 97%;
+        /* background-color: rgba(0, 0, 0, 0.2); */
+    }
+    .content{
+        width: 90%;
+    }
+    .introduction{
+       width: 100%;
+    }
+    .introduction h1{
+        font-size: 25px;
+    }
+    .intoDiv{
+        font-size: 14px;
+    }
+    .con h1{
+        font-size: 25px;
+    }
+    .con p{
+        font-size: 14px;
+    }
+    .origin{
+        padding: 2.5rem 0;
+        margin: 5rem 0;
+        margin-bottom: 2rem;
+    }
+    .introduction{
+        margin: 0 auto;
+        /* height: 30vh; */
+    }
+    .heading a{
+        padding: 0.7rem 2rem;
+    }
+}
