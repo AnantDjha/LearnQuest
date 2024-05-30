@@ -1,0 +1,200 @@
+.mainTeam{
+    width: 100vw;
+    height: 100vh;
+    /* background-color: black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    /* overflow-y: auto; */
+}
+.mainTeam h1{
+    color:white;
+    width: 70%;
+    text-align: center;
+    font-family: "Freeman", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+      font-size: 36px;
+      font-style: normal;
+      color: #6e5677;
+      font-size: 40px;
+  }
+
+.teamDiv{
+    height: 75%;
+    width: 70%;
+    /* background-color: #fff; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow-y:auto;
+    align-items: center;
+}
+.teamNameCard{
+    width: 25rem;
+    height: 19rem;
+    background: rgb(250, 250, 250);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition-duration: 0.2s;
+    /* margin:1rem 0; */
+    
+}
+
+.teamNameCard img{
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    margin: 0.7rem 0;
+    border:2px solid purple;
+}
+.teamNameCard span{
+    margin: 1rem 0;
+}
+.teamNameCard p{
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+}
+.teamNameCard h3{
+    color: #6e5677;
+    margin-bottom: 0.3rem;
+}
+
+.teamNameCard span img{
+    width: 35px;
+    height: 35px;
+    margin: 0 0.5rem;
+}
+.teamNameCard b{
+    display: flex;
+    align-items: center;
+    /* background-color: blue; */
+    width: 100%;
+    justify-content: center;
+    margin: 0.5rem 0;
+    
+}
+
+.teamNameCard b img{
+    width: 17px;
+    height: 17px;
+    border-radius: 0;
+    margin: 0;
+    margin-right: 0.4rem;
+    border:none;
+}
+
+@media only screen and (max-width:1750px)
+{
+    .teamDiv{
+        width: 80%;
+    }
+    .teamNameCard{
+        width: 30%;
+        height: 48%;
+    }
+}
+@media only screen and (max-width:1150px)
+{
+    .teamDiv{
+        height: 80%;
+    }
+   
+    .teamNameCard{
+        width: 45%;
+        height: 48%;
+        margin: 1rem 0;
+    }
+}
+@media only screen and (max-width:779px)
+{
+    .teamDiv{
+        width: 90%;
+    }
+   
+    .teamNameCard{
+        width: 45%;
+        height: 48%;
+        margin: 1rem 0;
+    }
+}
+@media only screen and (max-width:650px)
+{
+    .teamNameCard b{
+        margin: 0.2rem 0;
+        margin-bottom: 0.5rem;
+    }
+    .teamDiv{
+        width: 90%;
+        height: 70%;
+    }
+   
+    .teamNameCard{
+        width: 15rem;
+        height: 15rem;
+        margin: 2rem 0;
+    }
+    .teamNameCard p{
+        font-size: 11px;
+    }
+    .teamNameCard p{
+        margin-top: 0.5rem;
+    }
+    .teamNameCard span{
+        margin-bottom: 2rem;
+    }
+}
+@media only screen and (max-width:560px)
+{
+    .teamNameCard b{
+        margin: 0.2rem 0;
+        margin-bottom: 0.8rem;
+    }
+    .mainTeam{
+        margin-top: 0;
+        height: 90vh;
+    }
+    .mainTeam h1{
+        font-size: 19px;
+        margin-bottom:0.2rem;
+    }
+    .teamDiv{
+        width: 95%;
+        height: 67%;
+    }
+   
+    .teamNameCard{
+        width: 45%;
+        height: 13rem;
+        margin: 2rem 0;
+    }
+    .teamNameCard h4{
+        font-size: 14px;
+    }
+    .teamNameCard p{
+        font-size: 10px;
+    }
+    .teamNameCard p{
+        margin-top: 0.5rem;
+    }
+    .teamNameCard span{
+        margin-bottom: 2rem;
+        margin-top: 0.3rem;
+    }
+    .teamNameCard img{
+        width: 5rem;
+        height: 5rem;
+    }
+    .teamNameCard h3{
+        font-size: 16px;
+    }
+}

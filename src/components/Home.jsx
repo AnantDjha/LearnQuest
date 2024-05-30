@@ -7,6 +7,9 @@ import video from "../assets/VideoIntro.mp4"
 import tp from "../assets/lpi.png"
 import { Link } from "react-router-dom"
 import arrow from "../assets/arrow.png"
+import dataScience from "../assets/dataScienceProgram.png"
+import webDevProgram from "../assets/webDevProgram.png"
+import androidDevProgram from "../assets/androidDevProgram.jpg"
 
 export default function Home() {
 
@@ -18,7 +21,7 @@ export default function Home() {
           <div className="heading">
             <h1>Fuel your ambition</h1>
             <h3>Make a decision and catalyst your career with coursify paltform by taking part in In-demand skills making programs and accelarate learning</h3>
-            <a href="">Explore courses</a>
+            <Link to="/courses">Explore courses</Link>
           </div>
         </div>
       </div>
@@ -71,7 +74,7 @@ export default function Home() {
         </h1>
         <div className="programs">
           <Link className="box-p">
-            <img src={tp} alt="" />
+            <img src={webDevProgram} alt="" />
             <div className="box-detail">
               <h3>Web development</h3>
               <span>Skills you will gain: HTML, CSS, javascript, react.js, node.js and mongoDB</span>
@@ -81,21 +84,21 @@ export default function Home() {
             </div>
           </Link>
           <Link className="box-p">
-          <img src={tp} alt="" />
+          <img src={androidDevProgram} alt="" />
             <div className="box-detail">
-            <h3>Web development</h3>
-            <span>Skills you will gain: HTML, CSS, javascript, react.js, node.js and mongoDB</span>
-            <span>4.8 stars</span>
+            <h3>Android Development</h3>
+            <span>Skills you will gain: Java, Kotlin, Android SDK, firebase and SQLite</span>
+            <span>4.5 stars</span>
             <span>Course type: Beginner</span>
-              <span>Duration: 6 months</span>
+              <span>Duration: 4 months</span>
             </div>
           </Link>
           <Link className="box-p">
-          <img src={tp} alt="" />
+          <img src={dataScience} alt="" />
             <div className="box-detail">
-            <h3>Web development</h3>
-            <span>Skills you will gain: HTML, CSS, javascript, react.js, node.js and mongoDB</span>
-            <span>4.8 stars</span>
+            <h3>Data Science</h3>
+            <span>Skills you will gain: Python programming, Data science. Data analysis, R programming</span>
+            <span>4.7 stars</span>
             <span>Course type: Beginner</span>
               <span>Duration: 6 months</span>
             </div>

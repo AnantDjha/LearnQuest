@@ -1,5 +1,5 @@
 .mainNav{
-    background-color: #c64af3;
+    background-color: #8d44a8;
     background-color: #500dd5;
     position: fixed;
     top: 0;
@@ -9,11 +9,12 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 4rem;
+    height: 4.3rem;
 }
 .mainNav nav p{
     color:aliceblue;
 }
+
 
 .divCart{
     width: 10%;
@@ -36,21 +37,58 @@ ul{
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
+    
 }
+.mainNav nav ul a li:hover{
+    color: black;
+}
+
+.mainNav nav ul a .colorKaroBlack::before{
+    content: "";
+    width: 80%;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    top:110%;
+    left: 10%;
+    animation-name: karoAnimate;
+    animation-duration: 0.4s;
+
+}
+
+#cart{
+    display: flex;
+    align-items: center;
+}
+.icon-small{
+    font-size: 25px;
+}
+@keyframes karoAnimate{
+    from{
+        width: 0;
+    }
+    to{
+        width: 80%;
+    }
+}
+
 .mainNav nav ul a li{
     list-style: none;
     /* padding: 1rem; */
-    color:white;
-}
-.openMenu{
-    height: 15rem;
-    background-color:blue;
+    color: white;
+    /* color:; */
+    position: relative;
 }
 
 .brand{
     display: flex;
     align-items: center;
     width: 10%;
+    font-family: "Jaro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
 
 }
 .brand img{
@@ -89,7 +127,6 @@ ul{
     }
     .mainNav nav .openMenu{
         height: 15rem;
-        background-color:blue;
     }
     .mainNav nav ul a li{
         padding: 0.5rem 1rem;
@@ -109,4 +146,13 @@ ul{
         margin-right: 10px;
     }
    
+}
+@media only screen and (max-width:600px)
+{
+    .brand p{
+        font-size: 21px;
+    }
+    .brand img{
+        height: 20px;
+    }
 }

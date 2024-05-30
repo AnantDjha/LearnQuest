@@ -4,6 +4,7 @@
     /* background-color: blue; */
     position: relative;
   overflow: hidden;
+  margin-bottom: 6rem;
     
 }
 body{
@@ -93,6 +94,7 @@ body{
     width: 25%;
     background-color: transparent;
     color: #6e5677;
+    /* color: #52365d; */
     font-family: "Josefin Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
