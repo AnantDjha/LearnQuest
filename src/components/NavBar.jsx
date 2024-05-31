@@ -30,6 +30,15 @@ function NavBar()
     setScrollPosition(position);
   };
 
+  const handleMenuButton = ()=>{
+    if(ulref.current.className == '')
+        {
+            ulref.current.className = "openMenu"
+        }
+        else{
+            ulref.current.className = ''
+        }
+  }
   
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -68,18 +77,10 @@ function NavBar()
         <div className="mainNav" ref={navRef}  >
             <nav>
                <div className="brand">
-                <img src={menuImg} alt="" onClick={(e)=>{
-                    if(ulref.current.className == '')
-                        {
-                            ulref.current.className = "openMenu"
-                        }
-                        else{
-                            ulref.current.className = ''
-                        }
-                }}/>
+                <img src={menuImg} alt="" onClick={()=>handleMenuButton()}/>
                 <p style={{color:"white"}}>LearnQuest</p>
                </div>
-                <ul ref={ulref}>
+                <ul ref={ulref} onClick={()=>{handleMenuButton()}}>
                     <Link to="/" ref={l1} ><li className={!currentUrl.endsWith("bout") && !currentUrl.endsWith("eam") && !currentUrl.endsWith("ourses") ? "colorKaroBlack":''}onClick={handleTop}>Home</li></Link>
                     <Link to="/courses" ref={l2}><li className={currentUrl.endsWith("ourses")?"colorKaroBlack":''} onClick={handleTop}>Courses</li></Link>
                     <Link to="/about" ref={l3}><li className={currentUrl.endsWith("bout") ? "colorKaroBlack" :''} onClick={handleTop}>About</li></Link>

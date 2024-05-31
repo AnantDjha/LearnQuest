@@ -4,6 +4,7 @@ import Footer from "./Footer"
 export default function About() {
     return (
         <div className="aboutMain">
+             <h2>Hear is some imformation about this site</h2>
             <h1>About us</h1>
             <div className="aboutBody">
                 <p>

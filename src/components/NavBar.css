@@ -114,7 +114,7 @@ ul{
     .mainNav nav ul{
       position: absolute;
       top:4rem;
-      background-color: black;
+      background-color: #83638C;
       flex-direction: column;
       width: 100%;
       align-items: start;
@@ -125,6 +125,10 @@ ul{
       overflow: hidden;
       transition-duration: 0.5s;
     }
+    .mainNav nav ul a .colorKaroBlack::before{
+        display: none;
+    }
+    
     .mainNav nav .openMenu{
         height: 15rem;
     }
