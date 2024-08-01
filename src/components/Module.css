@@ -1,0 +1,154 @@
+.mainModule{
+    width: 100vw;
+    /* height: 100vh; */
+    
+    /* background-color: #fff; */
+    margin-bottom: 3rem;
+}
+
+.containerOfModule{
+    width: 65rem;
+    margin: auto;
+}
+.containerOfModule h2{
+    width: 100%;
+    margin-bottom: 2rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: 400; */
+    font-style: normal;
+    font-size: 20px;
+}
+
+.moduleText{
+    width: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    height: fit-content;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-bottom: 1rem ; */
+}
+
+.moduleText h3{
+    width: 95%;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: 400; */
+    font-style: normal;
+    font-size: 18px;
+    padding: 1rem 0;
+    cursor: pointer;
+    position: relative;
+}
+.moduleText h3 b{
+    position: absolute;
+    right: 0;
+}
+.instruction{
+    width: 95%;
+    display: flex;align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 1rem ;
+
+    
+}
+.linlToVideo{
+    width: 95%;
+    /* background-color: red; */
+    display: flex;
+    margin-bottom: 0.3rem;
+    align-items: center;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+    /* padding-left: 1rem; */
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: 400; */
+    font-style: normal;
+}
+.linlToVideo a{
+    width: 80%;
+    /* background-color: blue; */
+    padding: 0.5rem 0;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-size: 15px;
+    color: #83638C;
+}
+.linlToVideo p span{
+    padding: 0.3rem 0.5rem ;
+    background-color: #83638C;
+    margin:0  0.5rem;
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+    
+}
+
+.lengthAndNotes {
+    width: 95%;
+    /* background-color: red; */
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+}
+
+.lengthAndNotes p{
+    padding: 0.3rem 0.5rem;
+    border-radius: 10px;
+    /* background-color: rgb(244, 244, 244); */
+    border: 1px solid #83638C;
+    margin-right: 1rem;
+    cursor:not-allowed;
+   
+}
+.lengthAndNotes div{
+    display: flex;
+}
+.lengthAndNotes a{
+    text-decoration: none;
+    color: black;
+}.lengthAndNotes a p{
+    cursor: pointer;
+}
+.linlToVideo p{
+    display: flex;
+}
+
+@media only screen and (max-width:1080px)
+{
+    .containerOfModule{
+        width: 95%;
+    }
+}
+@media only screen and (max-width:689px)
+{
+    .containerOfModule{
+        width: 90%;
+    }
+}
+@media only screen and (max-width:550px)
+{
+    .containerOfModule h2{
+        font-size: 16px;
+    }
+    .moduleText h3{
+        font-size: 15px;
+    }
+    .lengthAndNotes p{
+        font-size: 12px;
+    }
+    .linlToVideo a{
+        font-size: 13px;
+    }
+    .linlToVideo p span{
+        font-size: 11px;
+        margin-right: 0.1rem;
+    }
+}
+

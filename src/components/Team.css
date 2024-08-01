@@ -162,20 +162,27 @@
     .mainTeam{
         margin-top: 0;
         height: 90vh;
+        height: fit-content;
+
     }
     .mainTeam h1{
         font-size: 19px;
         margin-bottom:0.2rem;
+        margin-top: 5rem;
     }
     .teamDiv{
         width: 95%;
-        height: 67%;
+        height: fit-content;
+        margin-top: 0.2rem;
+        /* background-color: #fff; */
+        overflow: hidden;
+        margin-bottom: 3rem;
     }
    
     .teamNameCard{
         width: 45%;
-        height: 13rem;
-        margin: 2rem 0;
+        height: 14rem;
+        margin: 0.5rem 0;
     }
     .teamNameCard h4{
         font-size: 14px;

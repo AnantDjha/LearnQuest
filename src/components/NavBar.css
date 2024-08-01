@@ -1,6 +1,6 @@
 .mainNav{
     background-color: #8d44a8;
-    background-color: #500dd5;
+    /* background-color: #500dd5; */
     position: fixed;
     top: 0;
     width:100vw;
@@ -40,7 +40,7 @@ ul{
     
 }
 .mainNav nav ul a li:hover{
-    color: black;
+    color: rgb(255, 0, 81);
 }
 
 .mainNav nav ul a .colorKaroBlack::before{
@@ -55,6 +55,7 @@ ul{
     animation-duration: 0.4s;
 
 }
+
 
 #cart{
     display: flex;

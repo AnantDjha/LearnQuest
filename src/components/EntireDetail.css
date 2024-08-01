@@ -1,0 +1,264 @@
+.forNav{
+    width: 100vw;
+    height: 4.3rem;
+    background-color: #83638C;
+}
+
+.homeAndName{
+    width: 100vw;
+    background-color: #fff;
+    padding:0.8rem 0;
+}
+.homeAndName p{
+    width: 65rem;
+    margin: auto;
+    font-family:  sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+}
+.homeAndName p span{
+    margin: 0 1rem;
+}
+
+
+.headerContent{
+    width: 65rem;
+    height: 50vh;
+    /* background-color: #fff; */
+    margin:auto;
+    display: flex;
+}
+.firstSection{
+    width: 70%;
+    height: 100%;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.firstSection h1{
+    font-size: 38px;
+    width: 85%;
+    margin: 2rem 0;
+    margin-top: 1rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+.firstSection p{
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+}
+.firstSection button{
+    width: 7rem;
+    padding: 1rem 1rem;
+    background-color: #83638C;
+    color: white;
+    outline: none;
+    border: none;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 5px;
+    margin: 1rem 0;
+    cursor: pointer;
+}
+.firstSection img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.secondSection{
+    width: 30%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.instructor{
+    width: fit-content;
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.secondSection span img{
+    width:40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0.5rem 0;
+    margin-right: 1rem;
+    
+}
+.secondSection h4{
+    margin: 0.4rem 0;
+}
+.secondSection span{
+    display: flex;
+    align-items: center;
+}
+.secondSection .company{
+    /* background-color: #fff; */
+    display: flex;
+    align-items: center;
+    margin-top: 0.8rem;
+}
+.secondSection p img{
+    width: 20px;
+    height: 20px;
+}
+.company img{
+    margin-right: 1rem;
+}
+
+
+.cards{
+    width: 65rem;
+    height: 6.5rem;
+    /* background-color: #fff; */
+    margin: 1rem auto;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+justify-content: space-between;    
+    
+}
+
+.level,.durationLevel,.pace{
+    width: 33%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: 400; */
+    font-style: normal;
+    background-color: #fff;
+}
+
+.level h3,.durationLevel h3,.pace h3{
+    font-size: 20px;
+    font-weight: 450;
+}
+.level p,.durationLevel p,.pace p{
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.skillsSection{
+    margin: 3rem auto;
+    width: 65rem;
+    /* background-color: #fff; */
+}
+.skillsSection h2{
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: 400; */
+    font-style: normal;
+    font-size: 20px;
+}
+.strs{
+    display: flex;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    width: 60%;
+
+}
+.strs p{
+    padding: 0.4rem 1rem;
+    background-color: #83638C;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+@media only screen and (max-width:1080px)
+{
+    .headerContent{
+        flex-direction: column;
+        align-items: center;
+        height: fit-content;
+        padding: 1rem 0;
+        width: 100%;
+    }
+    .firstSection{
+        width: 80%;
+
+    }
+    .secondSection{
+        width: 80%;
+        justify-content: start;
+        margin: 1rem 0;
+    }
+
+    .homeAndName p{
+        width: 80%;
+    }
+    .cards{
+        width: 95%;
+    }
+    .skillsSection{
+        width: 95%;
+    }
+    .strs{
+        width: 100%;
+    }
+}
+@media only screen and (max-width:689px)
+{
+   .cards{
+    flex-direction: column;
+    height: fit-content;
+    width: 80%;
+   }
+.level,.durationLevel,.pace{
+    width: 100%;
+    margin: 0.2rem 0;
+    padding: 1rem 0;
+}
+}
+@media only screen and (max-width:630px)
+{
+    .firstSection h1{
+        font-size: 30px;
+        width: 100%;
+    }
+    .skillsSection h2{
+        font-size: 16px;
+    }
+    .strs p{
+        font-size: 12px;
+        margin-right: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .skillsSection{
+        width: 80%;
+    }
+}
+@media only screen and (max-width:460px)
+{
+    .firstSection h1{
+        font-size: 27px;
+        width: 100%;
+    }
+    .firstSection p{
+        font-size: 13px;
+    }
+    .homeAndName p span{
+        font-size: 12px;
+        margin: 0 0.4rem;
+    }
+}

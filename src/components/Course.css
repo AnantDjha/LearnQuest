@@ -1,6 +1,6 @@
 .mainCourses{
     width: 100vw;
-    height: 100vh;
+    height: fit-content;
     /* background-color: #fff; */
     display: flex;
     flex-direction: column;
@@ -8,20 +8,23 @@
     justify-content: center;
     position: relative;
     margin-top: 2rem;
+    margin-top: 4.3rem ;
+    padding: 4rem 0;
 }
 .mainCourses h1{
     /* margin: 1rem 0; */
     position: absolute;
-    top: 2.3rem;
+    top: 0;
     width: 100vw;
+    color: rgb(253, 211, 2);
     /* height: 100vh; */
     background-color: white;
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
     padding: 0.5rem 0;
     color: #6e5677;
     font-family: "Freeman", sans-serif;
-    font-weight: 500;
+    font-weight: 300;
     font-style: normal;
       /* font-size: 36px; */
       font-style: normal;
@@ -41,6 +44,7 @@
 .programsOfCourse .box-p{
     width: 23rem;
     height: 20rem;
+    margin: 1rem 0;
 
 }
 
@@ -87,6 +91,9 @@
 {
     .mainCourses h1{
         font-size: 16px;
+    }
+    .mainCourses{
+        padding: 2rem 0;
     }
 }
 

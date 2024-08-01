@@ -10,6 +10,7 @@ import arrow from "../assets/arrow.png"
 import dataScience from "../assets/dataScienceProgram.png"
 import webDevProgram from "../assets/webDevProgram.png"
 import androidDevProgram from "../assets/androidDevProgram.jpg"
+import { courses } from "../AllTheCourses"
 
 export default function Home() {
 
@@ -70,61 +71,50 @@ export default function Home() {
 
       <div className="white"><div className="someCourse">
         <h1>
-        Recommended Professional Programs
+          Recommended Professional Programs
         </h1>
         <div className="programs">
-          <Link className="box-p">
-            <img src={webDevProgram} alt="" />
-            <div className="box-detail">
-              <h3>Web development</h3>
-              <span>Skills you will gain: HTML, CSS, javascript, react.js, node.js and mongoDB</span>
-              <span>4.8 stars</span>
-              <span>Course type: Beginner</span>
-              <span>Duration: 6 months</span>
-            </div>
-          </Link>
-          <Link className="box-p">
-          <img src={androidDevProgram} alt="" />
-            <div className="box-detail">
-            <h3>Android Development</h3>
-            <span>Skills you will gain: Java, Kotlin, Android SDK, firebase and SQLite</span>
-            <span>4.5 stars</span>
-            <span>Course type: Beginner</span>
-              <span>Duration: 4 months</span>
-            </div>
-          </Link>
-          <Link className="box-p">
-          <img src={dataScience} alt="" />
-            <div className="box-detail">
-            <h3>Data Science</h3>
-            <span>Skills you will gain: Python programming, Data science. Data analysis, R programming</span>
-            <span>4.7 stars</span>
-            <span>Course type: Beginner</span>
-              <span>Duration: 6 months</span>
-            </div>
-          </Link>
+          {
+            courses.filter(a => a.id < 4).map(item => {
+              return (
+                <Link className="box-p">
+                  <img src={item.src} alt="" />
+                  <div className="box-detail">
+                    <h3>{item.name}</h3>
+                    <span>Skills you will gain: {item.skillToGain}</span>
+                    <span>
+                      {item.star} <i className="fa fa-star fa-sm" style={{ color: "rgb(253, 211, 2)" }}></i>
+                    </span>
+                    <span>Course type: {item.type}</span>
+                    <span>Duration: {item.duration} months</span>
+                  </div>
+                </Link>
+              )
+            })
+          }
+
         </div>
         <Link className="more">Explore more courses <i>&rarr;</i></Link>
       </div></div>
 
       <div className="signup">
         <div className="email">
-           <div className="enterEmail">
+          <div className="enterEmail">
             <h1>Sign up for news, course updates and support for all stages of development.</h1>
             <p><input type="text" /><button>&rarr;</button></p>
-           </div>
+          </div>
         </div>
         <div className="contact">
           <div className="contactCard">
-             <div className="contact-options">
+            <div className="contact-options">
               <h3>Contact us</h3>
               <span><button></button><button></button><button></button></span>
-             </div>
-             <div className="para">
-                <span>
+            </div>
+            <div className="para">
+              <span>
                 Get help with questions about purchasing, registering and creating own course.
-                </span>
-             </div>
+              </span>
+            </div>
           </div>
         </div>
       </div>

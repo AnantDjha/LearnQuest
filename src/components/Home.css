@@ -696,6 +696,7 @@ width: 93%;
         /* height: 30vh; */
     }
     .heading a{
-        padding: 0.7rem 2rem;
+        padding: 0.7rem 1.5rem;
+        font-size: 12px;
     }
 }

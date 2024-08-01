@@ -9,6 +9,8 @@ import Footer from './components/Footer'
 import About from './components/About'
 import Team from './components/Team'
 import Course from './components/Course'
+import EntireDetail from './components/EntireDetail'
+import Video from './VideoModule/Video'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,6 +32,14 @@ function App() {
       path:"/courses",
       element:<><Course/><NavBar/><Footer/></>
     },
+    {
+      path:"/course-detail/:id",
+      element:<><EntireDetail/><NavBar/><Footer/></>
+    },
+    {
+      path:"/video-module/:uri",
+      element:<><Video/></>
+    }
   ])
 
   return (
