@@ -11,6 +11,8 @@ import Team from './components/Team'
 import Course from './components/Course'
 import EntireDetail from './components/EntireDetail'
 import Video from './VideoModule/Video'
+import Login from './Login and Signup/Login'
+import Signup from './Login and Signup/Signup'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -39,7 +41,15 @@ function App() {
     {
       path:"/video-module/:uri",
       element:<><Video/></>
-    }
+    },
+    {
+      path:"/login",
+      element:<><Login/><NavBar/><Footer/></>
+    },
+    {
+      path:"/register",
+      element:<><Signup/><NavBar/><Footer/></>
+    },
   ])
 
   return (

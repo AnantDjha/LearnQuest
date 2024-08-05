@@ -1,0 +1,159 @@
+.mainLogin{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+   
+}
+.former{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginform{
+    width: 28rem;
+    height: 87%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.imageBox{
+    width: 100%;
+    height: 40%;
+}
+.imageBox img{
+    width: 100%;
+    height: 90%;
+}
+.imageBox p{
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+}
+.loginform form{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: grey; */
+    justify-content: center;
+    align-items: center;
+}
+.detail{
+    width: 90%;
+    margin: 0.7rem 0;
+}
+.detail input{
+    width: 100%;
+    padding: 0.5rem 0.1rem;
+    margin-top:0.2rem;
+}
+.detail p{
+    color: #83638C;
+    font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.detail span{
+    color: red;
+    font-size: 13px;
+}
+.login{
+    width:90%;
+    display: flex;
+    justify-content: space-between;
+}
+.login span{
+    font-size: 25px;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    
+}
+.login button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    background-color:#83638C;
+    color: white;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.login button:active{
+    transform: scale(0.9);
+}
+
+.noAccount{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+.noAccount a{
+    text-decoration: none;
+    color: #83638C;
+    padding: 0.3rem 1rem;
+    border:1px solid #83638C;
+    border-radius: 10px;
+}
+.signupForm{
+    height: 92%;
+    overflow: hidden;
+    position: relative;
+}
+.floaterMsg1{
+    position: absolute;
+    margin-top: 1rem;
+
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(166, 255, 185, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+.floaterMsg2{
+    position: absolute;
+    margin-top: 1rem;
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(252, 204, 194, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+@media only screen and (max-width:450px)
+{
+    .mainLogin{
+        height: fit-content;
+    }
+    .former{
+        height: fit-content;
+    }
+    .loginform{
+        height: 91vh;
+        /* margin-top: 1rem; */
+        padding: 1rem 0;
+    }
+ 
+}

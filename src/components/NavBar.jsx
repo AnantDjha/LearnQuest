@@ -81,7 +81,7 @@ function NavBar()
                 <p style={{color:"white"}}>LearnQuest</p>
                </div>
                 <ul ref={ulref} onClick={()=>{handleMenuButton()}}>
-                    <Link to="/" ref={l1} ><li className={!currentUrl.endsWith("bout") && !currentUrl.endsWith("eam") && !currentUrl.endsWith("ourses") && !currentUrl.includes("-") ? "colorKaroBlack":''}onClick={handleTop}>Home</li></Link>
+                    <Link to="/" ref={l1} ><li className={!currentUrl.endsWith("bout") && !currentUrl.endsWith("eam") && !currentUrl.endsWith("ourses") && !currentUrl.includes("-") && !currentUrl.endsWith("login") ? "colorKaroBlack":''}onClick={handleTop}>Home</li></Link>
                     <Link to="/courses" ref={l2}><li className={currentUrl.endsWith("ourses")?"colorKaroBlack":''} onClick={handleTop}>Courses</li></Link>
                     <Link to="/about" ref={l3}><li className={currentUrl.endsWith("bout") ? "colorKaroBlack" :''} onClick={handleTop}>About</li></Link>
                     <Link to="/team" ref={l4}><li className={currentUrl.endsWith("eam") ? "colorKaroBlack":''} onClick={handleTop}>Team</li></Link>
