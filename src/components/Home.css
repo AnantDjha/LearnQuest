@@ -60,6 +60,8 @@ body{
    text-decoration: none;
    color: white;
    border-radius: 5px;
+   font-family: "Freeman", sans-serif;
+   font-weight: 300;
 }
 .heading h1{
     font-size: 55px;
@@ -68,13 +70,12 @@ body{
   font-style: normal;
 }
 .heading h3{
-    margin: 20px 0;
-    font-family: "Signika", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 50;
-  font-style: normal;
-  font-variation-settings:
-    "GRAD" 0;
+    margin: 30px 0;
+    font-family: "Radio Canada Big", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    /* font-size: 16px; */
 }
 
 .introduction{

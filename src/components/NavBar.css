@@ -17,7 +17,7 @@
 
 
 .divCart{
-    width: 10%;
+    /* width:; */
     /* background-color: blue; */
     display: flex;
     justify-content: center;
@@ -55,11 +55,23 @@ ul{
     animation-duration: 0.4s;
 
 }
-
+.loginToApp{
+    padding: 0.2rem  0.6rem;
+    color: white;
+    border: 2px solid white;
+    text-decoration: none;
+    transition-duration: 0.3s;
+    border-radius: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.loginToApp:active{
+    transform: scale(0.9);
+}
 
 #cart{
     display: flex;
     align-items: center;
+    margin-left: 1rem;
 }
 .icon-small{
     font-size: 25px;

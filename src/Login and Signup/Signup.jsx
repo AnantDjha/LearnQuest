@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
 export default function Signup() {
@@ -17,6 +17,10 @@ export default function Signup() {
         reset,
         formState: { errors, isSubmitting, }
     } = useForm()
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const [resultAfterSignup, setResultAfterSignup] = useState(null);
     const onSubmit = (data) => {
 
@@ -45,12 +49,12 @@ export default function Signup() {
             </div>
             <div className="former">
 
-                <div className="loginform signupForm" >
-                    {resultAfterSignup != null &&  <div>{resultAfterSignup.result ? <motion.div className="floaterMsg1" initial={{ height: 0, opacity: 0 }} animate={{ height: "3rem", opacity: 1 }} transition={{ duration: 0.3 }}>
+                <motion.div className="loginform signupForm" initial={{postion:"relative",right:"28rem",opacity:0}} animate={{right:"0rem",opacity:1}} transition={{duration:0.5}}>
+                    {resultAfterSignup != null &&  <motion.div >{resultAfterSignup.status ? <motion.div className="floaterMsg1" initial={{ height: 0, opacity: 0 }} animate={{ height: "3rem", opacity: 1 }} transition={{ duration: 0.3 ,delay:0.3}}>
                         {resultAfterSignup && resultAfterSignup.message}
-                    </motion.div> : <motion.div className="floaterMsg2" initial={{ height: 0, opacity: 0 }} animate={{ height: "3rem", opacity: 1 }} transition={{ duration: 0.2 }}>
+                    </motion.div> : <motion.div className="floaterMsg2" initial={{ height: 0, opacity: 0 }} animate={{ height: "3rem", opacity: 1 }} transition={{ duration: 0.3 ,delay:0.3}}>
                         {resultAfterSignup && resultAfterSignup.message}
-                    </motion.div>}</div>
+                    </motion.div>}</motion.div>
                     }
                     <div className="imageBox">
                         <img src={loginImage} alt="" />
@@ -75,7 +79,8 @@ export default function Signup() {
                         <div className="detail">
                             <p>Create Password</p>
                             <input type="password" {...register("password", {
-                                required: { value: true, message: "password is required" }
+                                required: { value: true, message: "password is required" },
+                                minLength:{value:8,message: "Password must contains minimum 8 charcter"}
                             })} />
                             {errors.password && <span> {errors.password.message}</span>}
                         </div>
@@ -89,7 +94,7 @@ export default function Signup() {
                             <Link to="/login">Login</Link>
                         </div>
                     </form>
-                </div>
+                </motion.div>
             </div>
         </div>
     )

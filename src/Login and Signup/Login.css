@@ -19,6 +19,7 @@
     background-color: white;
     border-radius: 10px;
     display: flex;
+    position: relative;
     flex-direction: column;
 }
 .imageBox{

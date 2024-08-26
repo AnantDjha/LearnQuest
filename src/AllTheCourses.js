@@ -28,6 +28,9 @@ export const courses = [
         star:4.6,
         type:"Beginner",
         duration: 6,
+        discount:15,
+        noOfVideos:57,
+        price:999,
         src:webDevProgram,
         heading:"Learn Web Development from level zero to Expert",
         instructor:{
@@ -322,6 +325,10 @@ export const courses = [
         star:4.3,
         type:"Beginner",
         duration: 4,
+        noOfVideos:57,
+        price:1299,
+        discount:12,
+
         src:androidDevProgram,
         heading:"Become the Android Developer avail learning from the scratch",
         instructor:{

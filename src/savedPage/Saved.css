@@ -1,0 +1,244 @@
+.mainSaved{
+    display: flex;
+    flex-direction: column;
+
+  
+
+}
+.contentOfSaved{
+    width: 100%;
+    /* height: 70vh; */
+    /* background-color: red; */
+    margin: 2rem 0;
+    margin-bottom: 4rem;
+    
+}
+.savedCourse{
+    width: 67rem;
+    /* background-color: #fff; */
+    margin: 0 auto;
+    /* height: 70vh; */
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.boxForSaved{
+    width: 95%;
+    height: 12rem;
+    background-color: #fff;
+    margin-bottom: 0.2rem;
+    display: flex;
+    /* padding: 1rem 0; */
+
+}
+.imageSectionForSaved{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageSectionForSaved img{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+.imageSectionForSaved img:hover{
+    transform: scale(1.1);
+
+}
+.headingSaved, .footerSaved{
+    width: 100%;
+    padding: 0.8rem 0;
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color: grey;
+}
+.footerSaved{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-decoration: none;
+}
+.headingSaved span, .footerSaved span{
+    display: inline-block;
+    width: 95%;
+    margin: auto;
+    color: grey;
+    /* background-color: red; */
+    font-size: 20px;
+}
+.footerSaved span{
+    font-size: 16px;
+    color: black;
+}
+.textSectionForSaved{
+    width: 65%;
+    height: 100%;
+    /* background-color: grey; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.textSectionForSaved h3 , .textSectionForSaved span{
+    width: 90%;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    width: 20rem;
+    
+}
+.textSectionForSaved h3{
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    width: 20rem;
+}
+.textSectionForSaved span{
+    font-weight: normal;
+    width: 20rem;
+}
+.justRemove{
+    width: 15%;
+    height: 100%;
+    /* background-color: grey; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.justRemove i{
+   
+    font-size: 26px;
+    color: blueviolet;
+    /* width: 90%; */
+    width: fit-content;
+    text-align: end;
+    cursor: pointer;
+    position: relative;
+}
+.justRemove i b{
+    position: absolute;
+    color: black;
+    font-weight: 100;
+    font-size: 14px;
+    top: -1rem;
+    right: 0rem;
+    display: none;
+}
+.justRemove p {
+    font-size: 22px;
+    width: 90%;
+    text-align: end;
+    /* color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+.justRemove p span{
+    color: rgb(10, 74, 10);
+
+}
+.justRemove p b{
+    font-size: 17px;
+    text-decoration: line-through;
+    color: grey;
+}
+.both{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width:1077px)
+{
+    .savedCourse{
+        width: 100vw;
+    }
+}
+@media only screen and (max-width:763px)
+{
+  .textSectionForSaved{
+    width: 60%;
+
+  }
+  .justRemove{
+    width: 40%;
+  }
+}
+@media only screen and (max-width:750px)
+{
+  .imageSectionForSaved{
+    width: 9rem;
+  }
+}
+@media only screen and (max-width:668px)
+{
+  .imageSectionForSaved{
+    width: 10rem;
+  }
+  .both{
+    flex-direction: column;
+  }
+  .justRemove{
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 80%;
+    height: 20%;
+    /* background-color: red; */
+  }
+  .justRemove i ,.justRemove p{
+    width: fit-content;
+  }
+  .textSectionForSaved{
+    height: 80%;
+  }
+  .boxForSaved{
+    height: 14rem;
+  }
+}
+@media only screen and (max-width:480px)
+{
+    .imageSectionForSaved{
+        width: 30%;
+        /* align-items: start; */
+    }
+    .imageSectionForSaved img{
+        width: 5rem;
+        height: 5rem;
+        /* margin-top: 0.5rem; */
+    }
+    .both{
+        width: 70%;
+    }
+    .textSectionForSaved{
+        width: 100%;
+    }
+    .textSectionForSaved h3 , .textSectionForSaved span{
+        width: 100%;
+        /* background-color: red; */
+    }
+    .contentOfSaved{
+        margin-top: 1rem;
+    }
+    .justRemove p span{
+        font-size: 18px;
+    }
+    .justRemove p b{
+        font-size: 13px;
+    }
+}

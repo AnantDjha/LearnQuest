@@ -75,9 +75,9 @@ export default function Home() {
         </h1>
         <div className="programs">
           {
-            courses.filter(a => a.id < 4).map(item => {
+            courses.filter(a => a.id < 4).map((item,i) => {
               return (
-                <Link className="box-p">
+                <Link className="box-p" key={i}>
                   <img src={item.src} alt="" />
                   <div className="box-detail">
                     <h3>{item.name}</h3>
