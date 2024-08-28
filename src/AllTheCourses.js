@@ -172,7 +172,7 @@ export const courses = [
                         nameOfContent:"Variables and Datatypes"
                     },
                     {
-                        url:"Hrd3SfCCXZw",//https://www.youtube.com/watch?v=Hrd3SfCCXZw&list=PLsyeobzWxl7qtP8Lo9TReqUMkiOp446cV&index=7&pp=iAQB
+                        url:"ULNJSTSJc7s",//https://www.youtube.com/watch?v=ULNJSTSJc7s&list=PLsyeobzWxl7qtP8Lo9TReqUMkiOp446cV&index=9&pp=iAQB
                         nameOfContent:"Javascript Operators"
                     },
                     {

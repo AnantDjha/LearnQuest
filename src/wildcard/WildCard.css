@@ -1,0 +1,50 @@
+.mainWildCard{
+    width: 100vw;
+    height:100vh;
+    /* background-color: ; */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.img{
+    width: 40rem;
+    height: 30rem;
+    position: relative;
+}
+.img::before{
+    content:"";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/pageNotFound.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.mainWildCard button{
+    background-color: #83638C;
+    border: none;
+    outline: none;
+    font-size: 19px;
+    color: white;
+    padding: 0.5rem 3rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+.mainWildCard button:active{
+    transform: scale(0.9);
+}
+
+@media only screen and (max-width:633px)
+{
+    .img{
+        width: 100%;
+        /* height: ; */
+    }
+}

@@ -95,7 +95,7 @@ export default function MyCourse() {
                                                     })}
                                                 >
                                                     <div style={{ marginLeft:"0.3rem", marginBottom:"0.8rem" }}>
-                                                        <strong>{`${videoNumber[i]?.module}%`}</strong>
+                                                        <strong>{`${parseInt((videoNumber.find(q => q.id == item.id)?.module /item.noOfVideos)*100)}%`}</strong>
                                                     </div>
                                                 </CircularProgressbarWithChildren>
                                             </div>

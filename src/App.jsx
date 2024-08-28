@@ -15,6 +15,7 @@ import axios from 'axios'
 import Saved from './savedPage/Saved'
 import MyCourse from './mycourse/MyCourse'
 import Foot from './footer/Foot'
+import WildCard from './wildcard/WildCard'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -113,6 +114,10 @@ useEffect(()=>{
     {
       path:"/my-course",
       element:<><MyCourse/><NavBar/><Foot/></>
+    },
+    {
+      path:"/*",
+      element:<><WildCard/></>
     }
   ])
 
