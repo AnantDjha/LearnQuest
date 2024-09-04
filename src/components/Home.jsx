@@ -11,9 +11,25 @@ import dataScience from "../assets/dataScienceProgram.png"
 import webDevProgram from "../assets/webDevProgram.png"
 import androidDevProgram from "../assets/androidDevProgram.jpg"
 import { courses } from "../AllTheCourses"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faMailBulk, faMailForward, faPhone, faVoicemail } from "@fortawesome/free-solid-svg-icons"
 
 export default function Home() {
 
+  const [comment , setComment ] = useState(localStorage.getItem("comment") || "")
+  const commentRef  = useRef()
+  const [inp , setInp] = useState(localStorage.getItem("comment") || "")
+  const onSubmit = ()=>{
+    if(comment == "")
+    {
+       commentRef.current.style.borderBottom = "2px solid red"
+       return;
+    }
+    else{
+      localStorage.setItem("comment" , comment)
+    }
+    setComment(localStorage.getItem("comment"))
+  }
 
   return (
     <div className="mainHome" >
@@ -75,7 +91,7 @@ export default function Home() {
         </h1>
         <div className="programs">
           {
-            courses.filter(a => a.id < 4).map((item,i) => {
+            courses.filter(a => a.id < 4).map((item, i) => {
               return (
                 <Link className="box-p" key={i}>
                   <img src={item.src} alt="" />
@@ -100,15 +116,21 @@ export default function Home() {
       <div className="signup">
         <div className="email">
           <div className="enterEmail">
-            <h1>Sign up for news, course updates and support for all stages of development.</h1>
-            <p><input type="text" /><button>&rarr;</button></p>
+            <h1>Please leave a comment with any suggestions for interface improvements or any questions you have about the site.</h1>
+            <p>
+              {inp.length < 0 ? <><input ref={commentRef} type="text" value={comment} onChange={(e)=>{setComment(e.target.value)}}/> <button onClick={onSubmit}>&rarr;</button></>: 
+              <span>Thankyou for your response!</span>} 
+             </p>
           </div>
         </div>
         <div className="contact">
           <div className="contactCard">
             <div className="contact-options">
               <h3>Contact us</h3>
-              <span><button></button><button></button><button></button></span>
+              <span>
+                <a href="tel:+919028828688"><FontAwesomeIcon icon={faPhone}/></a>
+                <a href="mailTo:anantjha0112@gmail.com"><FontAwesomeIcon icon={faMailBulk}/></a>
+              </span>
             </div>
             <div className="para">
               <span>

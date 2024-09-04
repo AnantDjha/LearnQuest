@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 const userDetailForLearnQuest  = require("./model/UserModel.js")
 const cors = require("cors");
 const allCoursesBuyedByUser = require("./model/CourcesBuyed.js");
+const Razorpay = require("razorpay")
+
 const app = express();
 
 app.use(cookie())
@@ -140,12 +142,15 @@ app.get("/logout" , async (req, res)=>{
 
 app.post("/buy-course",async (req,res)=>{
     try {
-        const email = req.body.email;
-        const courseId = req.body.courseId;
+        if(!req.session.user)
+        {
+            return;
+        }
+        const courseId = req.body.id;
         const date = new Date()
 
         const updatedDoc = await allCoursesBuyedByUser.findOneAndUpdate(
-            { email: email },
+            { email: req.session.user.email },
             { $push: { courses: {id:courseId, module:0, date:date.getDate(),month:date.getMonth(),year:date.getFullYear()} } },
             { new: true, upsert: true } 
         );
@@ -353,6 +358,30 @@ app.post("/remove-saved-course", async (req, res)=>{
         res.json({completed:false})
     }
 })
+
+
+const razorpay = new Razorpay({
+    key_id: "rzp_test_gI00jflkRvp85R",
+    key_secret: "GJAHUj7atKa2sc57EOoj1c5W"
+})
+
+app.post("/razorpay", async (req, res) => {
+    try {
+        const options = {
+            amount: req.body.amount * 100,  // Make sure req.body.amount is defined
+            currency: "INR",
+            receipt: "sudhfshdihisdhcugsucsdycgusdcu",
+            payment_capture: 1
+        };
+
+        const response = await razorpay.orders.create(options);
+        res.json(response);
+
+    } catch (error) {
+        console.error('Error creating Razorpay order:', error);
+        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    }
+});
 
 // starting the process
 app.listen(process.env.PORT , (()=>{

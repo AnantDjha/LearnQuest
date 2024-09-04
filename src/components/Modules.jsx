@@ -50,7 +50,6 @@ export default function Modules({ modules, courseIsBuyed }) {
 
         axios.get("http://localhost:5000/getModule").
         then((res)=>{
-            console.log(res.data);
             
             setVideoUrlArray(res.data)
         })

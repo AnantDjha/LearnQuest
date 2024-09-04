@@ -16,6 +16,8 @@ import Saved from './savedPage/Saved'
 import MyCourse from './mycourse/MyCourse'
 import Foot from './footer/Foot'
 import WildCard from './wildcard/WildCard'
+import Checkout from './checkout/Checkout'
+import CompletePayment from './components/CompletePayment'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,7 +31,6 @@ function App() {
     axios.get("http://localhost:5000/get-course-detail"
     )
     .then((res)=>{
-      console.log(res.data);
         if(res.data.completed)
         {
             
@@ -118,6 +119,14 @@ useEffect(()=>{
     {
       path:"/*",
       element:<><WildCard/></>
+    },
+    {
+      path:"/checkout-page",
+      element:<><Checkout/><NavBar/><Foot/></>
+    },
+    {
+      path:"/payment-gateway",
+      element:<><Checkout/><NavBar/><Foot/><CompletePayment/></>
     }
   ])
 

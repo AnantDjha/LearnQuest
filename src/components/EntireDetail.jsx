@@ -3,12 +3,13 @@ import { courses } from "../AllTheCourses"
 import { useNavigate, useParams } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheckCircle, faHome, faHomeAlt, faLanguage } from "@fortawesome/free-solid-svg-icons"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import Modules from "./Modules"
 import axios from "axios"
 import { motion } from "framer-motion"
 import { useAnimation } from "framer-motion"
 import { userContext } from "../context/UserContext"
+import { Link } from "react-router-dom"
 
 
 export default function EntireDetail({ courseIsBuyed, savedCourses }) {
@@ -20,6 +21,18 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
     const [isSaved, setIsSaved] = useState(savedCourses)
     const navigate = useNavigate()
     const { user, setUser } = useContext(userContext)
+
+    // state to provide to checkout page and payment gateway
+    const [price] = useState(course.price)
+    const [courseId] = useState(parseInt(param.id))
+
+    // scroll function and ref
+    const scrollRef = useRef(null);
+    const scrollToBottom = () => {
+        window.scrollTo({ top: document.documentElement.scrollHeight,behavior:"smooth"})
+    };
+
+
 
     const saveTheCourse = () => {
         axios.defaults.withCredentials = true;
@@ -83,7 +96,7 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
         getSavedCourse()
     }, [])
     return (
-        <div className="mainEntireDetail">
+        <div className="mainEntireDetail" ref={scrollRef}>
             <div className="forNav"></div>
             <div className="homeAndName">
                 <p>
@@ -107,7 +120,7 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
                     {courseIsBuyed.courses.find(i => i.id === parseInt(param.id)) ? (
                         <button disabled={true}>Already Enrolled</button>
                     ) : (
-                        <button>Enroll and start now</button>
+                        <button onClick={scrollToBottom}>Enroll and start now</button>
                     )}
                     <p>Lots have already enrolled</p>
                 </div>
@@ -156,7 +169,12 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
             <div className="buyerAndSaver">
                 <div className="buttonToBuy">
                     <div style={{ display: "flex", height: "100%", alignItems: "center" }}>
-                        {!courseIsBuyed.courses.find(i => i.id === parseInt(param.id)) && <><button className="enrollBtn">Enroll</button><p><span>₹ {course.price}.0</span> <b>₹ {((course.price * 100) / (100 - course.discount)).toFixed(2)}</b></p></>}
+                        {!courseIsBuyed.courses.find(i => i.id === parseInt(param.id)) && <>
+                            <Link to = "/checkout-page" className="enrollBtn"  state={{price , courseId}}>Enroll</Link>
+                            <p>
+                                <span>₹ {course.price}.0</span>
+                                <b>₹ {((course.price * 100) / (100 - course.discount)).toFixed(2)}</b>
+                            </p></>}
                     </div>
                     <motion.button className="saver"
                         animate={animation}

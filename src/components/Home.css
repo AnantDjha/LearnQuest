@@ -401,7 +401,7 @@ margin-bottom: 2rem;
 }
 
 
-.contact-options span button{
+.contact-options span a{
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -410,6 +410,7 @@ margin-bottom: 2rem;
     outline: none;
     margin: 0 0.6rem;
     cursor: pointer;
+    padding: 0.5rem;
 }
 .para{
     width: 90%;

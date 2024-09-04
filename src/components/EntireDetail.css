@@ -121,9 +121,7 @@
 .company img{
     margin-right: 1rem;
 }
-.company span{
-    
-}
+
 
 .cards{
     width: 65rem;
@@ -213,11 +211,12 @@ justify-content: space-between;
     color: white;
     border: none;
     outline: none;
-    height: 80%;
+    line-height: 3rem;
     /* width: 4rem; */
     margin: 0 1rem ;
     padding: 0 2rem;
     border-radius: 5px;
+    text-decoration: none;
     
 }
 .enrollBtn:hover {
@@ -261,6 +260,7 @@ justify-content: space-between;
     overflow: hidden;
     display: flex;
     justify-content: center;
+    margin-right: 1rem;
 }
 .saver:disabled{
     border:none;

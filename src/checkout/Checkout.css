@@ -1,0 +1,121 @@
+.checkout-content{
+    display: flex;
+    margin: auto;
+    width: 65rem;
+    /* background-color: black; */
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem auto;
+}
+
+.checkout-content h2
+{
+    width: 95%;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color: gray;
+    margin-bottom: 0.5rem;
+}
+
+.courseToBecheck{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.checkedBox{
+    width: 90%;
+    display: flex;
+    background-color: #fff;
+    padding: 1rem 0;
+}
+.checkedBox span{
+    margin: 0.5rem 0;
+}
+.imageSectionForCheck{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imageSectionForCheck img{
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+
+}
+
+.priceDetail{
+    width: 60rem;
+    background-color: #fff;
+    padding: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+.priceDetail h5{
+    margin-bottom: 1rem;
+    font-size: 17px;
+    color: gray;
+}
+.priceDetail ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.priceDetail ul li{
+    list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 18px;
+}
+
+.checkLink{
+    width: 100%;
+    display: flex;
+    /* background-color: red; */
+    justify-content: space-between;
+}
+.checkLink p{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+.checkLink a{
+    text-decoration: none;
+    padding: 0.2rem 1rem;
+    background-color: #83638C;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    display: flex;
+    align-items: center;
+}
+.checkLink a:active{
+    transform: scale(0.9);
+}
+
+@media only screen and (max-width:1048px)
+{
+    .checkout-content{
+        width: 95%;
+    }
+
+    .priceDetail{
+        width: 90%;
+        margin: 1rem auto;
+    }
+    .checkoutAmount{
+        width: 100%;
+        /* margin: auto; */
+
+    }
+
+}
