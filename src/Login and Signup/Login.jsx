@@ -24,7 +24,7 @@ export default function Login() {
     const onSubmit = (data) => {
         axios.defaults.withCredentials = true;
 
-        axios.post("http://localhost:5000/login", data, {
+        axios.post("https://learnquest-backend-i922.onrender.com/login", data, {
             headers: {
                 "Content-Type": "application/json",
                 withCredentials: true

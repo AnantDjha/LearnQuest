@@ -28,7 +28,7 @@ function App() {
   const getBuyedCourse = ()=>{
     
     axios.defaults.withCredentials = true
-    axios.get("http://localhost:5000/get-course-detail"
+    axios.get("https://learnquest-backend-i922.onrender.com/get-course-detail"
     )
     .then((res)=>{
         if(res.data.completed)
@@ -46,7 +46,7 @@ function App() {
 
   const getSavedCourse = ()=>{
     axios.defaults.withCredentials = true
-    axios.get("http://localhost:5000/get-saved-courses"
+    axios.get("https://learnquest-backend-i922.onrender.com/get-saved-courses"
     )
     .then((res)=>{
       setSavedCourses(res.data.dataArr);
@@ -59,7 +59,7 @@ function App() {
 
   useEffect(()=>{
     axios.defaults.withCredentials = true;
-    axios.get("http://localhost:5000/session",{
+    axios.get("https://learnquest-backend-i922.onrender.com/session",{
       headers:{
         "Content-Type":"application/json"
       }

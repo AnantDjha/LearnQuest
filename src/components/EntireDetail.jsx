@@ -36,7 +36,7 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
 
     const saveTheCourse = () => {
         axios.defaults.withCredentials = true;
-        axios.post("http://localhost:5000/saveThisCourse", { id: course.id },
+        axios.post("https://learnquest-backend-i922.onrender.com/saveThisCourse", { id: course.id },
             {
                 "content-type": "application/json"
             }
@@ -55,7 +55,7 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
 
     const getSavedCourse = () => {
         axios.defaults.withCredentials = true
-        axios.get("http://localhost:5000/get-saved-courses")
+        axios.get("https://learnquest-backend-i922.onrender.com/get-saved-courses")
             .then((res) => {
                 if (!res.data.noSession) {
                     setIsSaved(res.data.dataArr)

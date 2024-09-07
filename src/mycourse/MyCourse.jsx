@@ -11,32 +11,35 @@ import { userContext } from "../context/UserContext"
 
 export default function MyCourse() {
     const [course, setCourse] = useState([])
-    const [videoNumber , setVideoNumber] = useState([])
-    const {user} = useContext(userContext)
+    const [videoNumber, setVideoNumber] = useState([])
+    const { user } = useContext(userContext)
     const navigate = useNavigate()
 
     // fetch courses that are purchased
-    const getMyCourses = ()=>{
+    const getMyCourses = () => {
         axios.defaults.withCredentials = true
-        axios.get("http://localhost:5000/get-course-detail")
-        .then((res)=>{
-            let list = res.data.courses
-            setVideoNumber(list)
-            
-            const updated = list.map(element => {
-                return courses.find(a => a.id === element.id);
-            }).filter(item => item !== undefined);
+        axios.get("https://learnquest-backend-i922.onrender.com/get-course-detail")
+            .then((res) => {
 
-            setCourse(updated)
-        })
-        .catch((e)=>{
-            alert("something went wrong")
-        })
+
+                if (res.data.completed) {
+                    let list = res.data.courses
+                    setVideoNumber(list)
+
+                    const updated = list.map(element => {
+                        return courses.find(a => a.id === element.id);
+                    }).filter(item => item !== undefined);
+
+                    setCourse(updated)
+                }
+            })
+            .catch((e) => {
+                alert("something went wrong" + e)
+            })
     }
 
-    useEffect(()=>{
-        if(!user || !user.valid)
-        {
+    useEffect(() => {
+        if (!user || !user.valid) {
             navigate("/login")
             return;
         }
@@ -59,7 +62,7 @@ export default function MyCourse() {
                 </p>
             </div>
             <div className="contentOfSaved">
-                <div className="savedCourse" style={{ height:  "fitContent" }}>
+                <div className="savedCourse" style={{ height: "fitContent" }}>
                     <p className="headingSaved">
                         <span>My Courses</span>
                     </p>
@@ -88,14 +91,14 @@ export default function MyCourse() {
                                             </div>
                                             <div className="bar">
                                                 <CircularProgressbarWithChildren
-                                                    value={(videoNumber.find(q => q.id == item.id)?.module /item.noOfVideos)*100}
+                                                    value={(videoNumber.find(q => q.id == item.id)?.module / item.noOfVideos) * 100}
                                                     styles={buildStyles({
                                                         pathColor: '#83638C',
                                                         trailColor: '#eee'
                                                     })}
                                                 >
-                                                    <div style={{ marginLeft:"0.3rem", marginBottom:"0.8rem" }}>
-                                                        <strong>{`${parseInt((videoNumber.find(q => q.id == item.id)?.module /item.noOfVideos)*100)}%`}</strong>
+                                                    <div style={{ marginLeft: "0.3rem", marginBottom: "0.8rem" }}>
+                                                        <strong>{`${parseInt((videoNumber.find(q => q.id == item.id)?.module / item.noOfVideos) * 100)}%`}</strong>
                                                     </div>
                                                 </CircularProgressbarWithChildren>
                                             </div>

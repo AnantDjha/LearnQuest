@@ -27,7 +27,7 @@ export default function Modules({ modules, courseIsBuyed }) {
     const handleChange = (url)=>{
         axios.defaults.withCredentials = true;
 
-        axios.post("http://localhost:5000/checkTheBox" , {value:url,id:parseInt(param.id)} , {
+        axios.post("https://learnquest-backend-i922.onrender.com/checkTheBox" , {value:url,id:parseInt(param.id)} , {
 
             "content-type" : "application/json"
         })
@@ -48,7 +48,7 @@ export default function Modules({ modules, courseIsBuyed }) {
     const getTheChecked = ()=>{
         axios.defaults.withCredentials = true
 
-        axios.get("http://localhost:5000/getModule").
+        axios.get("https://learnquest-backend-i922.onrender.com/getModule").
         then((res)=>{
             
             setVideoUrlArray(res.data)
