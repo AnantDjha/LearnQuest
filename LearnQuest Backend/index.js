@@ -16,6 +16,7 @@ app.use(cors({
     origin: "http://localhost:5173",
     credentials: true,
 }))
+
 // creating a session 
 app.use(session({
     resave:false,
@@ -23,8 +24,10 @@ app.use(session({
     secret: process.env.SECRET_SESSION_KEY,
 
     cookie:{
-        secure:false,
-        maxAge: 1000* 60 * 60*60
+        secure:true,
+        domain: "http://localhost:5173",
+        maxAge: 1000* 60 * 60*60,
+        httpOnly:true
     }
 }));
 app.use(bodyParser.json())

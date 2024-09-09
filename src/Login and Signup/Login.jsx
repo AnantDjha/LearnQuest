@@ -13,15 +13,19 @@ export default function Login() {
         register,
         handleSubmit,
         watch,
-        formState: { errors, isSubmitting }
+        reset,
+        formState: { errors, isSubmitting, }
     } = useForm()
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
     const { user, setUser } = useContext(userContext)
+    const [buttonAvailable, setAvailable] = useState(true);
     const [resultAfterLogin, setResultAfterLogin] = useState(null)
     const onSubmit = (data) => {
+        setAvailable(false)
         axios.defaults.withCredentials = true;
 
         axios.post("https://learnquest-backend-i922.onrender.com/login", data, {
@@ -34,20 +38,23 @@ export default function Login() {
                 if (res.data.user) {
                     setUser(res.data.user)
                 }
+                reset()
+                setAvailable(true)
                 setResultAfterLogin(res.data)
-
             })
             .catch((e) => {
                 alert("something went wrong" + e)
             })
     }
+
+
     return (
         <div className="mainLogin">
             <div className="forNav">
 
             </div>
             <div className="former">
-                <motion.div className="loginform" initial={{postion:"relative",left:"28rem",opacity:0}} animate={{left:"0rem",opacity:1}} transition={{duration:0.5}}>
+                <motion.div className="loginform" initial={{ postion: "relative", left: "28rem", opacity: 0 }} animate={{ left: "0rem", opacity: 1 }} transition={{ duration: 0.5 }}>
                     {
                         resultAfterLogin &&
                         <div>
@@ -79,7 +86,10 @@ export default function Login() {
                         </div>
                         <div className="login">
                             <span>Lets login</span>
-                            <button type="submit" disabled={isSubmitting}>{isSubmitting ? "..." : <FontAwesomeIcon icon={faArrowRight} />}</button>
+                            <button type="submit" disabled={!buttonAvailable}>{!buttonAvailable ?
+                                <span className="waitLoader"></span> :
+                                <FontAwesomeIcon icon={faArrowRight} />}
+                            </button>
                         </div>
                         <div className="noAccount">
                             <p>Don't have a account?</p>

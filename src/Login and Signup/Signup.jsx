@@ -21,9 +21,12 @@ export default function Signup() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const [resultAfterSignup, setResultAfterSignup] = useState(null);
-    const onSubmit = (data) => {
 
+    const [resultAfterSignup, setResultAfterSignup] = useState(null);
+    const [buttonAvailable, setAvailable] = useState(true);
+
+    const onSubmit = (data) => {
+        setAvailable(false);
         axios.defaults.withCredentials = true;
         axios.post("https://learnquest-backend-i922.onrender.com/register", data, {
             headers: {
@@ -35,6 +38,7 @@ export default function Signup() {
         })
             .then((result) => {
                 reset()
+                setAvailable(true)
                 setResultAfterSignup(result.data)
             })
             .catch((err) => {
@@ -86,8 +90,11 @@ export default function Signup() {
                         </div>
 
                         <div className="login">
-                            <span>SignUp</span>
-                            <button type="submit" disabled={isSubmitting}>{isSubmitting ? "..." : <FontAwesomeIcon icon={faArrowRight} />}</button>
+                            <span>Lets login</span>
+                            <button type="submit" disabled={!buttonAvailable}>{!buttonAvailable ?
+                                <span className="waitLoader"></span> :
+                                <FontAwesomeIcon icon={faArrowRight} />}
+                            </button>
                         </div>
                         <div className="noAccount">
                             <p>Already have an account?</p>

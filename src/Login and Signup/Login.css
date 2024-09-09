@@ -81,6 +81,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    position: relative;
     outline: none;
     border: none;
     background-color:#83638C;
@@ -91,6 +92,33 @@
 
 .login button:active{
     transform: scale(0.9);
+}
+.login button:disabled ::before{
+    content: "";
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    /* background-color: #fff; */
+    border: 3px solid white;
+    border-right: 3px solid #83638C;
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    animation-name: loader;
+    animation-duration: 8000s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes loader{
+    0%{
+        transform: rotate(0);
+       
+    }
+    100%{
+        transform: rotate(3600000deg);
+        
+
+    }
 }
 
 .noAccount{
@@ -142,6 +170,8 @@
     font-weight: 500;
     font-style: normal;
 }
+
+
 
 @media only screen and (max-width:450px)
 {
