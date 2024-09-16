@@ -10,10 +10,12 @@ import { motion } from "framer-motion"
 import { useAnimation } from "framer-motion"
 import { userContext } from "../context/UserContext"
 import { Link } from "react-router-dom"
+import Loader from "../loader/Loader"
 
 
 export default function EntireDetail({ courseIsBuyed, savedCourses }) {
 
+    const [loading , setLoading] = useState(true);
     const param = useParams()
     const course = courses.filter(a => a.id === parseInt(param.id))[0];
     const [program, setProgram] = useState(course);
@@ -36,13 +38,12 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
 
     const saveTheCourse = () => {
         axios.defaults.withCredentials = true;
-        axios.post("https://learnquest-backend-i922.onrender.com/saveThisCourse", { id: course.id },
+        axios.post("http://localhost:5000/save/saveThisCourse", { id: course.id },
             {
                 "content-type": "application/json"
             }
         )
             .then((res) => {
-                console.log(res.data);
 
                 if (res.data.completed) {
                     getSavedCourse()
@@ -55,16 +56,17 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
 
     const getSavedCourse = () => {
         axios.defaults.withCredentials = true
-        axios.get("https://learnquest-backend-i922.onrender.com/get-saved-courses")
+        axios.get("http://localhost:5000/save")
             .then((res) => {
                 if (!res.data.noSession) {
                     setIsSaved(res.data.dataArr)
+                    setLoading(false)
                 }
 
             })
             .catch((e) => {
                 console.log(e);
-
+                setLoading(false)
             })
     }
 
@@ -94,9 +96,11 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
 
     useEffect(() => {
         getSavedCourse()
-    }, [])
+    }, [savedCourses])
+    
     return (
-        <div className="mainEntireDetail" ref={scrollRef}>
+        loading ? <div><Loader/></div>
+        :<div className="mainEntireDetail" ref={scrollRef}>
             <div className="forNav"></div>
             <div className="homeAndName">
                 <p>

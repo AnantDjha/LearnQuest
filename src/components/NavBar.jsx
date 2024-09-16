@@ -88,7 +88,7 @@ function NavBar() {
                     <Link to="/login" className="loginToApp"
                         onClick={()=>{
                             axios.defaults.withCredentials = true
-                            axios.get("https://learnquest-backend-i922.onrender.com/logout")
+                            axios.get("http://localhost:5000/register/logout")
                             .then((res)=>{
                                 if(res.data.completed)
                                 {

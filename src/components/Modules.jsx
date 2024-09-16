@@ -6,8 +6,10 @@ import { faArrowAltCircleDown, faArrowCircleDown, faDownload, faFileVideo, faLoc
 import { Link, useParams } from "react-router-dom";
 import { userContext } from "../context/UserContext";
 import axios from "axios";
+import Loader from "../loader/Loader";
 export default function Modules({ modules, courseIsBuyed }) {
 
+    const [loading , setLoading] = useState(true)
     const [inUse, setInUse] = useState(null);
     const boldRef = useRef(null)
     const [visible, setVisible] = useState(null)
@@ -25,9 +27,11 @@ export default function Modules({ modules, courseIsBuyed }) {
     }
 
     const handleChange = (url)=>{
+        setLoading(true)
+        
         axios.defaults.withCredentials = true;
 
-        axios.post("https://learnquest-backend-i922.onrender.com/checkTheBox" , {value:url,id:parseInt(param.id)} , {
+        axios.post("http://localhost:5000/course/checkTheBox" , {value:url,id:parseInt(param.id)} , {
 
             "content-type" : "application/json"
         })
@@ -35,10 +39,12 @@ export default function Modules({ modules, courseIsBuyed }) {
             if(data.data.completed)
             {
                 getTheChecked()
+                setLoading(false)
             }
         })
         .catch((e)=>{
             alert("something went wrong")
+            setLoading(false)
         })
     }
 
@@ -48,15 +54,17 @@ export default function Modules({ modules, courseIsBuyed }) {
     const getTheChecked = ()=>{
         axios.defaults.withCredentials = true
 
-        axios.get("https://learnquest-backend-i922.onrender.com/getModule").
+        axios.get("http://localhost:5000/course/getModule").
         then((res)=>{
             
             setVideoUrlArray(res.data)
+            setLoading(false)
         })
     }
 
     return (
-        <div className="mainModule">
+        loading ? <div><Loader/></div>
+        :<div className="mainModule">
             <div className="containerOfModule">
                 <h2>There are {modules.length} modules in the program</h2>
                 {modules.map(item => {

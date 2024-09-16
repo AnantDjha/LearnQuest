@@ -3,7 +3,7 @@ import "./Login.css"
 import loginImage from "../assets/LoginPageImg.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { userContext } from "../context/UserContext"
@@ -21,14 +21,17 @@ export default function Login() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
     const { user, setUser } = useContext(userContext)
     const [buttonAvailable, setAvailable] = useState(true);
     const [resultAfterLogin, setResultAfterLogin] = useState(null)
+    const navigate = useNavigate();
+
     const onSubmit = (data) => {
         setAvailable(false)
         axios.defaults.withCredentials = true;
 
-        axios.post("https://learnquest-backend-i922.onrender.com/login", data, {
+        axios.post("http://localhost:5000/register/login", data, {
             headers: {
                 "Content-Type": "application/json",
                 withCredentials: true
@@ -41,8 +44,15 @@ export default function Login() {
                 reset()
                 setAvailable(true)
                 setResultAfterLogin(res.data)
+                setTimeout(()=>{
+                    if(res.data.status)
+                        {
+                           history.back()
+                        }
+                }, 1000)
             })
             .catch((e) => {
+                setAvailable(true)
                 alert("something went wrong" + e)
             })
     }

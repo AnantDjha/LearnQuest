@@ -1,0 +1,32 @@
+.nothing-main{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nothin-img{
+    width: 40rem;
+    height: 30rem;
+    position: relative;
+}
+.nothin-img::before{
+    content:"";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/nothingToShow.avif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+@media only screen and (max-width:633px)
+{
+    .nothin-img{
+        width: 100%;
+        /* height: ; */
+    }
+}

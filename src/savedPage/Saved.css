@@ -1,9 +1,50 @@
+.empty-saved{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.empty-saved div {
+    /* width: 30rem; */
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    /* background-color: #83638C; */
+    margin-bottom: 5%;
+    padding: 1rem;
+    color: black;
+    border-radius: 10px;
+}
+
+.empty-saved div a{
+    /* margin-bottom: 1rem; */
+    padding: 0.6rem 0;
+    border : 2px solid #83638C;
+    color: #83638C;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+}
+.empty-saved div h3{
+    font-size: 30px;
+    margin: 1rem 0;
+    
+    font-family: "Radio Canada Big", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+}
+.empty-saved div p{
+    font-size: 17px;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    margin-bottom: 1rem
+}
 .mainSaved{
     display: flex;
     flex-direction: column;
-
-  
-
 }
 .contentOfSaved{
     width: 100%;

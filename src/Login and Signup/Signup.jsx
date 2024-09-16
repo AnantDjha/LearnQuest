@@ -28,7 +28,7 @@ export default function Signup() {
     const onSubmit = (data) => {
         setAvailable(false);
         axios.defaults.withCredentials = true;
-        axios.post("https://learnquest-backend-i922.onrender.com/register", data, {
+        axios.post("http://localhost:5000/register", data, {
             headers: {
 
                 "content-type": "application/json",
@@ -42,7 +42,9 @@ export default function Signup() {
                 setResultAfterSignup(result.data)
             })
             .catch((err) => {
-                alert("something went wrong"+err)
+
+                alert("something went wrong" + err)
+                setAvailable(true)
             })
 
     }
@@ -53,10 +55,10 @@ export default function Signup() {
             </div>
             <div className="former">
 
-                <motion.div className="loginform signupForm" initial={{postion:"relative",right:"28rem",opacity:0}} animate={{right:"0rem",opacity:1}} transition={{duration:0.5}}>
-                    {resultAfterSignup != null &&  <motion.div >{resultAfterSignup.status ? <motion.div className="floaterMsg1" initial={{ height: 0, opacity: 0 }} animate={{ height: "3rem", opacity: 1 }} transition={{ duration: 0.3 ,delay:0.3}}>
+                <motion.div className="loginform signupForm" initial={{ postion: "relative", right: "28rem", opacity: 0 }} animate={{ right: "0rem", opacity: 1 }} transition={{ duration: 0.5 }}>
+                    {resultAfterSignup != null && <motion.div >{resultAfterSignup.status ? <motion.div className="floaterMsg1" initial={{ height: 0, opacity: 0 }} animate={{ height: "3rem", opacity: 1 }} transition={{ duration: 0.3, delay: 0.3 }}>
                         {resultAfterSignup && resultAfterSignup.message}
-                    </motion.div> : <motion.div className="floaterMsg2" initial={{ height: 0, opacity: 0 }} animate={{ height: "3rem", opacity: 1 }} transition={{ duration: 0.3 ,delay:0.3}}>
+                    </motion.div> : <motion.div className="floaterMsg2" initial={{ height: 0, opacity: 0 }} animate={{ height: "3rem", opacity: 1 }} transition={{ duration: 0.3, delay: 0.3 }}>
                         {resultAfterSignup && resultAfterSignup.message}
                     </motion.div>}</motion.div>
                     }
@@ -84,7 +86,7 @@ export default function Signup() {
                             <p>Create Password</p>
                             <input type="password" {...register("password", {
                                 required: { value: true, message: "password is required" },
-                                minLength:{value:8,message: "Password must contains minimum 8 charcter"}
+                                minLength: { value: 8, message: "Password must contains minimum 8 charcter" }
                             })} />
                             {errors.password && <span> {errors.password.message}</span>}
                         </div>

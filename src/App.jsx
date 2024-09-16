@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import './App.css'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
-import { RouterProvider, createBrowserRouter} from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Footer from './components/Footer'
 import Team from './components/Team'
 import Course from './components/Course'
@@ -18,124 +18,131 @@ import Foot from './footer/Foot'
 import WildCard from './wildcard/WildCard'
 import Checkout from './checkout/Checkout'
 import CompletePayment from './components/CompletePayment'
+import Loader from './loader/Loader'
 
 function App() {
   const [count, setCount] = useState(0)
-  const {user,setUser} = useContext(userContext)
-  const [courseIsBuyed , setCourseIsBuyed] = useState({courses:[],module:[]});
-  const [savedCourses , setSavedCourses] = useState([])
+  const { user, setUser } = useContext(userContext)
+  const [courseIsBuyed, setCourseIsBuyed] = useState({ courses: [], module: [] });
+  const [savedCourses, setSavedCourses] = useState([])
+  const [loading, setLoading] = useState(true);
 
-  const getBuyedCourse = ()=>{
-    
+  const getBuyedCourse = () => {
+
     axios.defaults.withCredentials = true
-    axios.get("https://learnquest-backend-i922.onrender.com/get-course-detail"
+    axios.get("http://localhost:5000/course"
     )
-    .then((res)=>{
-        if(res.data.completed)
-        {
-            
-            setCourseIsBuyed(res.data);
+      .then((res) => {
+        if (res.data.completed) {
+
+          setCourseIsBuyed(res.data);
 
         }
-    })
-    .catch((e)=>{
-        alert("something went wrong"+e)
+      })
+      .catch((e) => {
+        alert("something went wrong" + e)
 
-    })
+      })
   }
 
-  const getSavedCourse = ()=>{
+  const getSavedCourse = () => {
     axios.defaults.withCredentials = true
-    axios.get("https://learnquest-backend-i922.onrender.com/get-saved-courses"
+    axios.get("http://localhost:5000/save"
     )
-    .then((res)=>{
-      setSavedCourses(res.data.dataArr);
-    })
-    .catch((e)=>{
-        alert("something went wrong"+e)
+      .then((res) => {
+        setSavedCourses(res.data.dataArr);
+        setLoading(false)
+      })
+      .catch((e) => {
+        setLoading(false)
 
-    })
+        alert("something went wrong" + e)
+
+      })
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.defaults.withCredentials = true;
-    axios.get("https://learnquest-backend-i922.onrender.com/session",{
-      headers:{
-        "Content-Type":"application/json"
+    axios.get("http://localhost:5000/session", {
+      headers: {
+        "Content-Type": "application/json"
       }
     })
-    .then((res)=>{
-      setUser(res.data);
-    })
-    .catch((e)=>{
-      alert("something went wrong"+e)
-    })
-  },[])
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((e) => {
+        alert("something went wrong" + e)
+      })
+  }, [])
 
-useEffect(()=>{
-  getBuyedCourse()
-  getSavedCourse()
-},[user])
+
+  useEffect(() => {
+    getBuyedCourse();
+    getSavedCourse();
+
+  }, [user])
 
 
   const router = createBrowserRouter([
     {
-      path:"/",
-      element:<><Home/><NavBar/><Footer/></>
+      path: "/",
+      element: loading ? <Loader /> : <><Home /><NavBar /><Footer /></>
     },
     {
-      path:"/team",
-      element:<><Team/><NavBar/><Footer/></>
+      path: "/team",
+      element: <><Team /><NavBar /><Footer /></>
     },
-   
+
     {
-      path:"/courses",
-      element:<><Course/><NavBar/><Footer/></>
-    },
-    {
-      path:"/course-detail/:id",
-      element:<><EntireDetail  courseIsBuyed = {courseIsBuyed} savedCourses={savedCourses}/><NavBar/><Footer/></>
+      path: "/courses",
+      element: <><Course /><NavBar /><Footer /></>
     },
     {
-      path:"/video-module/:uri",
-      element:<><Video/></>
+      path: "/course-detail/:id",
+      element: <><EntireDetail courseIsBuyed={courseIsBuyed} savedCourses={savedCourses} /><NavBar /><Footer /></>
     },
     {
-      path:"/login",
-      element:<><Login/><NavBar/><Footer/></>
+      path: "/video-module/:uri",
+      element: <><Video /></>
     },
     {
-      path:"/register",
-      element:<><Signup/><NavBar/><Footer/></>
+      path: "/login",
+      element: <><Login /><NavBar /><Footer /></>
     },
     {
-      path:"/courses-saved",
-      element:<><Saved/><NavBar/><Foot/></>
+      path: "/register",
+      element: <><Signup /><NavBar /><Footer /></>
     },
     {
-      path:"/my-course",
-      element:<><MyCourse/><NavBar/><Foot/></>
+      path: "/courses-saved",
+      element: <><Saved /><NavBar /><Foot /></>
     },
     {
-      path:"/*",
-      element:<><WildCard/></>
+      path: "/my-course",
+      element: <><MyCourse /><NavBar /><Foot /></>
     },
     {
-      path:"/checkout-page",
-      element:<><Checkout/><NavBar/><Foot/></>
+      path: "/*",
+      element: <><WildCard /></>
     },
     {
-      path:"/payment-gateway",
-      element:<><Checkout/><NavBar/><Foot/><CompletePayment/></>
-    }
+      path: "/checkout-page",
+      element: <><Checkout /><NavBar /><Foot /></>
+    },
+    {
+      path: "/payment-gateway",
+      element: <><Checkout /><NavBar /><Foot /><CompletePayment /></>
+    },
+
   ])
 
 
 
-  
+
   return (
     <>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
   )
 }

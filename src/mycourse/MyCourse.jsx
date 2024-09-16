@@ -8,8 +8,12 @@ import "./MyCourse.css"
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import axios from "axios"
 import { userContext } from "../context/UserContext"
+import Loader from "../loader/Loader"
+
 
 export default function MyCourse() {
+
+    const [loading , setLoading] = useState(true);
     const [course, setCourse] = useState([])
     const [videoNumber, setVideoNumber] = useState([])
     const { user } = useContext(userContext)
@@ -18,9 +22,8 @@ export default function MyCourse() {
     // fetch courses that are purchased
     const getMyCourses = () => {
         axios.defaults.withCredentials = true
-        axios.get("https://learnquest-backend-i922.onrender.com/get-course-detail")
+        axios.get("http://localhost:5000/course")
             .then((res) => {
-
 
                 if (res.data.completed) {
                     let list = res.data.courses
@@ -31,23 +34,49 @@ export default function MyCourse() {
                     }).filter(item => item !== undefined);
 
                     setCourse(updated)
+                    setLoading(false)
                 }
             })
             .catch((e) => {
                 alert("something went wrong" + e)
+                setLoading(false)
             })
     }
 
     useEffect(() => {
-        if (!user || !user.valid) {
+        if(!user)
+        {
+            navigate("/")
+            navigate("/my-course")
+            
+        }
+        else if (!user?.valid) {
             navigate("/login")
             return;
         }
         getMyCourses()
     }, [])
+
+    if (course.length == 0) {
+        return (
+            <>
+                <div className="forNav">
+
+                </div>
+                <div className="empty-saved">
+                    <div>
+                        <h3>No Enrolled courses</h3>
+                        <p>Explore courses and start your learning journey boost your career.</p>
+                        <Link to="/courses">Explore</Link>
+                    </div>
+                </div>
+            </>
+        )
+    }
     return (
 
-        <div className="mainSaved">
+        loading? <Loader/>
+        : <div className="mainSaved">
             <div className="forNav">
 
             </div>

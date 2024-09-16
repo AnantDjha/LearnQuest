@@ -9,6 +9,7 @@ function CompletePayment() {
     const { user } = useContext(userContext)
     const location = useLocation();
     const { price, courseId} = location.state || {};
+    const [loading , setLoading] = useState(true)
 
 
 
@@ -32,7 +33,7 @@ function CompletePayment() {
         }
 
         axios.defaults.withCredentials = true
-        axios.post("https://learnquest-backend-i922.onrender.com/razorpay", { amount: price }, {
+        axios.post("http://localhost:5000/razorpay", { amount: price }, {
             headers: {
                 "Content-Type": "application/json"
             }
@@ -41,6 +42,7 @@ function CompletePayment() {
 
                 // setImformation(res.data);
                 displayRazorPay(res.data)
+                
 
             })
             .catch((e) => {
@@ -57,6 +59,7 @@ function CompletePayment() {
             alert("something went wrong");
             return;
         }
+
         var options = {
             "key": "rzp_test_gI00jflkRvp85R", // Enter the Key ID generated from the Dashboard
             "amount": (information.amount).toString(), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -65,7 +68,7 @@ function CompletePayment() {
             "description": "Start your learning journey",
             handler: function (response) {
                 axios.defaults.withCredentials = true;
-                axios.post("https://learnquest-backend-i922.onrender.com/buy-course", { id: courseId },
+                axios.post("http://localhost:5000/course/buy-course", { id: courseId },
                     {
                         headers: {
                             "Content-Type": "application/json"
@@ -79,7 +82,7 @@ function CompletePayment() {
                         }
                         else {
                             alert("successFull")
-                            navigate("/my-course")
+                            window.location.href = "/"
                         }
                     })
                     .catch((e) => {
@@ -103,7 +106,11 @@ function CompletePayment() {
             }
         };
         var rzp1 = new window.Razorpay(options);
-        rzp1.open();
+
+      
+
+            rzp1.open();
+        
     }
 
     return (

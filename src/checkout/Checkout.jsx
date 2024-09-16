@@ -19,9 +19,15 @@ export default function Checkout() {
    
 
     useEffect(()=>{
-        if(!user || !user.valid)
+        if(!user)
+        {
+            navigate("/")
+            navigate("/checkout")
+        }
+        if(!user.valid)
         {
             navigate("/login")
+            
         }
         else if(!price || !courseId){
             navigate(-1)

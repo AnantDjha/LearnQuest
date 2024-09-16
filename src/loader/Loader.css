@@ -1,0 +1,56 @@
+.main-loader{
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.name{
+    background-color: white;
+    width: 3rem;
+    line-height: 3rem;
+    border-radius: 10rem;
+    text-align: center;
+    position: relative;
+    border: 2px solid #83638C;
+    overflow: hidden;
+}
+.name p{
+    color: white;
+    font-family: "Jaro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+    position: relative;
+}
+.mover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #83638C;
+    animation-name: increase;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    
+}
+
+@keyframes increase {
+    0%{
+        width: 0;
+    }
+    50%{
+        width: 105%;
+    }
+    100%{
+        width: 0;
+    }
+}
