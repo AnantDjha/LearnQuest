@@ -60,8 +60,8 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
             .then((res) => {
                 if (!res.data.noSession) {
                     setIsSaved(res.data.dataArr)
-                    setLoading(false)
                 }
+                setLoading(false)
 
             })
             .catch((e) => {

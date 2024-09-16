@@ -6,27 +6,29 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const Razorpay = require("razorpay")
-
-
+const RedisStore = require("connect-redis")(session)
 
 const app = express();
 app.use(cookie())
 app.use(cors({
+    // origin: "https://havelearnquest.netlify.app",
     origin: "http://localhost:5173",
     credentials: true,
 }))
 
 // creating a session 
 app.use(session({
+    store: new RedisStore({ client: redisClient }),
     resave:false,
     saveUninitialized:false,
     secret: process.env.SECRET_SESSION_KEY,
     
     cookie:{
         secure:false,
-        // domain: "https://localhost:5173",
+        sameSite: 'lax',
+      
         maxAge: 1000* 60 * 60*60,
-        // httpOnly:true
+       
     }
 }));
 app.use(bodyParser.json())
