@@ -62,12 +62,12 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
                     setIsSaved(res.data.dataArr)
                 }
                 setLoading(false)
-
             })
             .catch((e) => {
-                console.log(e);
                 setLoading(false)
+                console.log(e);
             })
+        
     }
 
     const handleSave = async () => {
