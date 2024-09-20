@@ -22,7 +22,11 @@ export default function MyCourse() {
     // fetch courses that are purchased
     const getMyCourses = () => {
         axios.defaults.withCredentials = true
-        axios.get("http://localhost:5000/course")
+        axios.get("http://localhost:5000/course",{
+            headers:{
+                "Authorization" : "Bearer " + localStorage.getItem("token")
+            }
+        })
             .then((res) => {
 
                 if (res.data.completed) {

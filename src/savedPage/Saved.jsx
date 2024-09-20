@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import Loader from "../loader/Loader"
+import Nothing from "../nothing/Nothing"
 
 export default function Saved() {
 
@@ -17,7 +18,10 @@ export default function Saved() {
 
     const getSavedCourse = () => {
         axios.defaults.withCredentials = true
-        axios.get("http://localhost:5000/save")
+        axios.get("http://localhost:5000/save", {
+            headers:{
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }})
             .then((res) => {
                 if (res.data.noSession) {
                     navigate("/login")
@@ -44,7 +48,7 @@ export default function Saved() {
         axios.defaults.withCredentials = true
         axios.post("http://localhost:5000/save/remove-saved-course", { id: id },
             {
-                headers: { "content-type": "application/json" }
+                headers: { "content-type": "application/json", "Authorization": "Bearer " + localStorage.getItem("token") }
             }
         )
             .then((res) => {

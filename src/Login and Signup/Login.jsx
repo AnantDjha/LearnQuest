@@ -34,11 +34,13 @@ export default function Login() {
         axios.post("http://localhost:5000/register/login", data, {
             headers: {
                 "Content-Type": "application/json",
-                withCredentials: true
+                withCredentials: true,
+                "Authorization" : "Bearer " + localStorage.getItem("token")
             }
         })
             .then((res) => {
                 if (res.data.user) {
+                    localStorage.setItem("token" , res.data.token)
                     setUser(res.data.user)
                 }
                 reset()

@@ -9,12 +9,12 @@ import axios from "axios";
 import Loader from "../loader/Loader";
 export default function Modules({ modules, courseIsBuyed }) {
 
-    const [loading , setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     const [inUse, setInUse] = useState(null);
     const boldRef = useRef(null)
     const [visible, setVisible] = useState(null)
     const param = useParams()
-    const [videoUrlArray , setVideoUrlArray] = useState(modules)
+    const [videoUrlArray, setVideoUrlArray] = useState(modules)
     // const { user, setUser } = useContext(userContext);
 
     const handleClick = (id) => {
@@ -26,94 +26,99 @@ export default function Modules({ modules, courseIsBuyed }) {
         }
     }
 
-    const handleChange = (url)=>{
+    const handleChange = (url) => {
         setLoading(true)
-        
+
         axios.defaults.withCredentials = true;
 
-        axios.post("http://localhost:5000/course/checkTheBox" , {value:url,id:parseInt(param.id)} , {
-
-            "content-type" : "application/json"
-        })
-        .then((data)=>{
-            if(data.data.completed)
+        axios.post("http://localhost:5000/course/checkTheBox", { value: url, id: parseInt(param.id) },
             {
-                getTheChecked()
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                }
+            })
+            .then((data) => {
+                if (data.data.completed) {
+                    getTheChecked()
+                    setLoading(false)
+                }
+            })
+            .catch((e) => {
+                alert("something went wrong")
                 setLoading(false)
-            }
-        })
-        .catch((e)=>{
-            alert("something went wrong")
-            setLoading(false)
-        })
+            })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getTheChecked()
-    },[])
-    const getTheChecked = ()=>{
+    }, [])
+    const getTheChecked = () => {
         axios.defaults.withCredentials = true
 
-        axios.get("http://localhost:5000/course/getModule").
-        then((res)=>{
-            
-            setVideoUrlArray(res.data)
-            setLoading(false)
-        })
+        axios.get("http://localhost:5000/course/getModule" , {
+            headers:{
+                "Authorization" : "Bearer " + localStorage.getItem("token")
+            }
+        }).
+            then((res) => {
+
+                setVideoUrlArray(res.data)
+                setLoading(false)
+            })
     }
 
     return (
-        loading ? <div><Loader/></div>
-        :<div className="mainModule">
-            <div className="containerOfModule">
-                <h2>There are {modules.length} modules in the program</h2>
-                {modules.map(item => {
-                    return (
-                        <div className="moduleText" key={item.heading} >
-                            <h3 onClick={() => {
-                                if (!courseIsBuyed.courses.find(i => i.id == parseInt(param.id))) return;
-                                handleClick(item.heading)
-                            }} onMouseEnter={() => {
-                                setVisible(item.heading);
-                            }}
-                                onMouseLeave={() => {
-                                    setVisible(null);
-                                }}>
-                                {item.heading}
-                                <b
-                                    style={{ display: visible == item.heading ? "inline" : "none" }}
-                                    ref={boldRef}
+        loading ? <div><Loader /></div>
+            : <div className="mainModule">
+                <div className="containerOfModule">
+                    <h2>There are {modules.length} modules in the program</h2>
+                    {modules.map(item => {
+                        return (
+                            <div className="moduleText" key={item.heading} >
+                                <h3 onClick={() => {
+                                    if (!courseIsBuyed.courses.find(i => i.id == parseInt(param.id))) return;
+                                    handleClick(item.heading)
+                                }} onMouseEnter={() => {
+                                    setVisible(item.heading);
+                                }}
+                                    onMouseLeave={() => {
+                                        setVisible(null);
+                                    }}>
+                                    {item.heading}
+                                    <b
+                                        style={{ display: visible == item.heading ? "inline" : "none" }}
+                                        ref={boldRef}
 
-                                >
-                                    {!courseIsBuyed.courses.find(i => i.id == parseInt(param.id)) ? <FontAwesomeIcon icon={faLock} /> : <FontAwesomeIcon icon={faArrowCircleDown} />}
-                                </b>
-                            </h3>
-                            {inUse === item.heading && <motion.div className="instruction" initial={{ height: "0", overflow: "hidden" }} animate={{ height: "auto" }} transition={{ duration: 0.3 }}>
-                                <div className="lengthAndNotes">
-                                    <div>
-                                        <p><FontAwesomeIcon icon={faVideo} /> <b>{item.content.length} videos</b></p>
-                                        <p><FontAwesomeIcon icon={faNotesMedical} /> <b>1 study material</b></p>
-                                    </div>
-                                    <Link to={item.notesToDownload} target="_blank"><p>Notes <FontAwesomeIcon icon={faDownload} /></p></Link>
-                                </div>
-                                {item.content.map(video => {
-                                    return (
-                                        <div className="linlToVideo" key={video.url} >
-                                            <input type="checkbox" style={{ marginLeft: "1rem" }} 
-                                                checked = {videoUrlArray.indexOf(video.url) != -1}
-                                                onChange={()=>{handleChange(video.url)}}
-                                            />
-                                            <Link to={`/video-module/${video.url}@${item.heading}`}>{video.nameOfContent}</Link>
-                                            {video.solve && <p><span>Solve</span><span>Code</span></p>}
+                                    >
+                                        {!courseIsBuyed.courses.find(i => i.id == parseInt(param.id)) ? <FontAwesomeIcon icon={faLock} /> : <FontAwesomeIcon icon={faArrowCircleDown} />}
+                                    </b>
+                                </h3>
+                                {inUse === item.heading && <motion.div className="instruction" initial={{ height: "0", overflow: "hidden" }} animate={{ height: "auto" }} transition={{ duration: 0.3 }}>
+                                    <div className="lengthAndNotes">
+                                        <div>
+                                            <p><FontAwesomeIcon icon={faVideo} /> <b>{item.content.length} videos</b></p>
+                                            <p><FontAwesomeIcon icon={faNotesMedical} /> <b>1 study material</b></p>
                                         </div>
-                                    )
-                                })}
-                            </motion.div>}
+                                        <Link to={item.notesToDownload} target="_blank"><p>Notes <FontAwesomeIcon icon={faDownload} /></p></Link>
+                                    </div>
+                                    {item.content.map(video => {
+                                        return (
+                                            <div className="linlToVideo" key={video.url} >
+                                                <input type="checkbox" style={{ marginLeft: "1rem" }}
+                                                    checked={videoUrlArray.indexOf(video.url) != -1}
+                                                    onChange={() => { handleChange(video.url) }}
+                                                />
+                                                <Link to={`/video-module/${video.url}@${item.heading}`}>{video.nameOfContent}</Link>
+                                                {video.solve && <p><span>Solve</span><span>Code</span></p>}
+                                            </div>
+                                        )
+                                    })}
+                                </motion.div>}
 
-                        </div>
-                    )
-                })}
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
-        </div>
     )
 }

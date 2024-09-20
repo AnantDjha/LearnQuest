@@ -35,7 +35,8 @@ function CompletePayment() {
         axios.defaults.withCredentials = true
         axios.post("http://localhost:5000/razorpay", { amount: price }, {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization" : "Bearer " + localStorage.getItem("token")
             }
         })
             .then((res) => {
@@ -71,7 +72,8 @@ function CompletePayment() {
                 axios.post("http://localhost:5000/course/buy-course", { id: courseId },
                     {
                         headers: {
-                            "Content-Type": "application/json"
+                            "Content-Type": "application/json",
+                            "Authorization" : "Bearer " + localStorage.getItem("token")
 
                         }
                     }

@@ -39,9 +39,10 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
     const saveTheCourse = () => {
         axios.defaults.withCredentials = true;
         axios.post("http://localhost:5000/save/saveThisCourse", { id: course.id },
-            {
-                "content-type": "application/json"
-            }
+           { headers:{
+                "content-type": "application/json",
+                "Authorization" : "Bearer " + localStorage.getItem("token")
+            }}
         )
             .then((res) => {
 
@@ -56,18 +57,22 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
 
     const getSavedCourse = () => {
         axios.defaults.withCredentials = true
-        axios.get("http://localhost:5000/save")
+        axios.get("http://localhost:5000/save" , {
+            headers:{
+                "Authorization" : "Bearer " + localStorage.getItem("token")
+            }
+        })
             .then((res) => {
                 if (!res.data.noSession) {
                     setIsSaved(res.data.dataArr)
                 }
                 setLoading(false)
+
             })
             .catch((e) => {
-                setLoading(false)
                 console.log(e);
+                setLoading(false)
             })
-        
     }
 
     const handleSave = async () => {
