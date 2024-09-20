@@ -88,15 +88,8 @@ function NavBar() {
                 <div className="divCart">
                     <Link to="/login" className="loginToApp"
                         onClick={()=>{
-                            axios.defaults.withCredentials = true
-                            axios.get("https://learnquest-backend-i922.onrender.com/register/logout")
-                            .then((res)=>{
-                                if(res.data.completed)
-                                {
-                                    setUser({valid:false})
-                                }
-                            })
-                            
+                           localStorage.setItem("token" , "");
+                           setUser({valid :false})
                         }}
                     >
                         {user && user.valid ? "logout" : "login"}
