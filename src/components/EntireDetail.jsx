@@ -179,7 +179,14 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
                 <div className="buttonToBuy">
                     <div style={{ display: "flex", height: "100%", alignItems: "center" }}>
                         {!courseIsBuyed.courses.find(i => i.id === parseInt(param.id)) && <>
-                            <Link to = "/checkout-page" className="enrollBtn"  state={{price , courseId}}>Enroll</Link>
+                            <Link  className="enrollBtn"  state={{price , courseId}} onClick={()=>{
+                                if(!user.valid)
+                                {
+                                    navigate("/login")
+                                    return;
+                                }
+                                navigate("/checkout-page")
+                            }}>Enroll</Link>
                             <p>
                                 <span>₹ {course.price}.0</span>
                                 <b>₹ {((course.price * 100) / (100 - course.discount)).toFixed(2)}</b>
