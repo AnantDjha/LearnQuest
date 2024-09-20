@@ -61,22 +61,7 @@ export default function MyCourse() {
         getMyCourses()
     }, [])
 
-    if (course.length == 0) {
-        return (
-            <>
-              <div className="forNav">
-
-                </div>
-                <div className="empty-saved">
-                    <div>
-                        <h3>No Enrolled courses</h3>
-                        <p>Explore courses and start your learning journey boost your career.</p>
-                        <Link to="/courses">Explore</Link>
-                    </div>
-                </div>
-            </>
-        )
-    }
+   
     return (
 
         loading? <Loader/>
