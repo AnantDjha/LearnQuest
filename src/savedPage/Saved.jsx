@@ -19,9 +19,10 @@ export default function Saved() {
     const getSavedCourse = () => {
         axios.defaults.withCredentials = true
         axios.get("https://learnquest-backend-i922.onrender.com/save", {
-            headers:{
-            "Authorization": "Bearer " + localStorage.getItem("token")
-        }})
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        })
             .then((res) => {
                 if (res.data.noSession) {
                     navigate("/login")
@@ -68,10 +69,11 @@ export default function Saved() {
     }, [])
 
 
-    if (course.length == 0) {
-        return (
-            <>
-             loading? <Loader/>:
+  
+    return (
+        loading ? <Loader />
+            :
+            courses.length == 0 ? <>
                 <div className="forNav">
 
                 </div>
@@ -83,67 +85,63 @@ export default function Saved() {
                     </div>
                 </div>
             </>
-        )
-    }
-    return (
-        loading ? <Loader />
-            : <div className="mainSaved">
-                <div className="forNav">
+                : <div className="mainSaved">
+                    <div className="forNav">
 
-                </div>
-                <div className="homeAndName">
-                    <p>
-                        <span style={{ marginLeft: "0" }}>
-                            <FontAwesomeIcon icon={faHomeAlt} style={{ fontSize: "14px" }} />
-                        </span>{"/"}
-                        <span>Browse</span> {"/"}
-                        <span>course</span> {"/"}
-                        <span>Saved</span>
-                    </p>
-                </div>
-                <div className="contentOfSaved">
-                    <div className="savedCourse" style={{ height: "fitContent" }}>
-                        <p className="headingSaved">
-                            <span>Saved Courses</span>
+                    </div>
+                    <div className="homeAndName">
+                        <p>
+                            <span style={{ marginLeft: "0" }}>
+                                <FontAwesomeIcon icon={faHomeAlt} style={{ fontSize: "14px" }} />
+                            </span>{"/"}
+                            <span>Browse</span> {"/"}
+                            <span>course</span> {"/"}
+                            <span>Saved</span>
                         </p>
-                        {
-                            course.map((item, i) => {
-                                return (
-                                    <div className="boxForSaved" key={i} >
-                                        <div className="imageSectionForSaved">
-                                            <img src={item.src} alt="" onClick={() => {
-                                                navigate("/course-detail/" + item.id)
-                                            }} />
-                                        </div>
-                                        <div className="both">
-                                            <div className="textSectionForSaved">
-                                                <h3>{item.name}</h3>
-                                                <span>Skills you will gain: {item.skillToGain}</span>
-                                                <span>
-                                                    {item.star} <i className="fa fa-star fa-sm" style={{ color: "rgb(253, 211, 2)" }}></i>
-                                                </span>
-                                                <span>Course type: Beginner</span>
-                                                <span>Duration: 6 months</span>
+                    </div>
+                    <div className="contentOfSaved">
+                        <div className="savedCourse" style={{ height: "fitContent" }}>
+                            <p className="headingSaved">
+                                <span>Saved Courses</span>
+                            </p>
+                            {
+                                course.map((item, i) => {
+                                    return (
+                                        <div className="boxForSaved" key={i} >
+                                            <div className="imageSectionForSaved">
+                                                <img src={item.src} alt="" onClick={() => {
+                                                    navigate("/course-detail/" + item.id)
+                                                }} />
                                             </div>
-                                            <div className="justRemove">
-                                                <p><i className="fa fa-bookmark" aria-hidden="true" onMouseEnter={() => {
-                                                    setUnSave(i)
-                                                }} onMouseLeave={() => {
-                                                    setUnSave(null)
+                                            <div className="both">
+                                                <div className="textSectionForSaved">
+                                                    <h3>{item.name}</h3>
+                                                    <span>Skills you will gain: {item.skillToGain}</span>
+                                                    <span>
+                                                        {item.star} <i className="fa fa-star fa-sm" style={{ color: "rgb(253, 211, 2)" }}></i>
+                                                    </span>
+                                                    <span>Course type: Beginner</span>
+                                                    <span>Duration: 6 months</span>
+                                                </div>
+                                                <div className="justRemove">
+                                                    <p><i className="fa fa-bookmark" aria-hidden="true" onMouseEnter={() => {
+                                                        setUnSave(i)
+                                                    }} onMouseLeave={() => {
+                                                        setUnSave(null)
 
-                                                }}
-                                                    onClick={() => handleUnsave(item.id)}
-                                                ><b style={{ display: unSave == i ? "inline" : "none", textDecoration: "none" }}>unsave</b></i></p>
-                                                <p><span>₹ {item.price}.0</span> <b>₹ {((item.price * 100) / (100 - item.discount)).toFixed(2)}</b></p>
+                                                    }}
+                                                        onClick={() => handleUnsave(item.id)}
+                                                    ><b style={{ display: unSave == i ? "inline" : "none", textDecoration: "none" }}>unsave</b></i></p>
+                                                    <p><span>₹ {item.price}.0</span> <b>₹ {((item.price * 100) / (100 - item.discount)).toFixed(2)}</b></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )
-                            })
-                        }
-                        <Link className="footerSaved" to="/courses"><span>Explore More Programs</span></Link>
+                                    )
+                                })
+                            }
+                            <Link className="footerSaved" to="/courses"><span>Explore More Programs</span></Link>
+                        </div>
                     </div>
                 </div>
-            </div>
     )
 }

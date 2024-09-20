@@ -64,8 +64,7 @@ export default function MyCourse() {
     if (course.length == 0) {
         return (
             <>
-                loading? <Loader/>
-                :<div className="forNav">
+              <div className="forNav">
 
                 </div>
                 <div className="empty-saved">
@@ -81,7 +80,20 @@ export default function MyCourse() {
     return (
 
         loading? <Loader/>
-        : <div className="mainSaved">
+        : 
+        courses.length == 0 ?  <>
+        <div className="forNav">
+
+          </div>
+          <div className="empty-saved">
+              <div>
+                  <h3>No Enrolled courses</h3>
+                  <p>Explore courses and start your learning journey boost your career.</p>
+                  <Link to="/courses">Explore</Link>
+              </div>
+          </div>
+      </>
+        :<div className="mainSaved">
             <div className="forNav">
 
             </div>
