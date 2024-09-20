@@ -68,8 +68,10 @@ function App() {
   }
 
   useEffect(() => {
-    localStorage.setItem("token" , "");
-    axios.defaults.withCredentials = true;
+    if(!localStorage.getItem("token"))
+      {
+        localStorage.setItem("token" , "");
+      }    axios.defaults.withCredentials = true;
     axios.get("http://localhost:5000/session", {
       headers: {
         "Content-Type": "application/json",
