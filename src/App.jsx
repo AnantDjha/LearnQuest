@@ -31,8 +31,8 @@ function App() {
 
     axios.defaults.withCredentials = true
     axios.get("http://localhost:5000/course", {
-      headers:{
-        "Authorization" : "Bearer " + localStorage.getItem("token")
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("token")
       }
     })
       .then((res) => {
@@ -50,9 +50,9 @@ function App() {
 
   const getSavedCourse = () => {
     axios.defaults.withCredentials = true
-    axios.get("http://localhost:5000/save",{
-      headers:{
-        "Authorization" : "Bearer " + localStorage.getItem("token")
+    axios.get("http://localhost:5000/save", {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("token")
       }
     })
       .then((res) => {
@@ -68,18 +68,17 @@ function App() {
   }
 
   useEffect(() => {
-    if(!localStorage.getItem("token"))
-      {
-        localStorage.setItem("token" , "");
-      }    axios.defaults.withCredentials = true;
+    if (!localStorage.getItem("token")) {
+      localStorage.setItem("token", "");
+    } axios.defaults.withCredentials = true;
     axios.get("http://localhost:5000/session", {
       headers: {
         "Content-Type": "application/json",
-        "Authorization" : "Bearer " + localStorage.getItem("token")
+        "Authorization": "Bearer " + localStorage.getItem("token")
       }
     })
       .then((res) => {
-        localStorage.setItem("token" , res.data.token)
+        localStorage.setItem("token", res.data.token)
         setUser(res.data);
       })
       .catch((e) => {

@@ -10,6 +10,7 @@ import { faShoppingCart, faShoppingBag } from '@fortawesome/free-solid-svg-icons
 import { Link } from "react-router-dom";
 import { userContext } from "../context/UserContext";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 
 function NavBar() {
@@ -72,7 +73,7 @@ function NavBar() {
 
     const ulref = useRef();
     return (
-        <div className="mainNav" ref={navRef}  >
+        <motion.div className="mainNav" ref={navRef}  initial={{top:"-5rem"}} animate={{top:0}} transition={{duration:0.3}}>
             <nav>
                 <div className="brand">
                     <img src={menuImg} alt="" onClick={() => handleMenuButton()} />
@@ -103,7 +104,7 @@ function NavBar() {
                     <Link to="/courses-saved" id="cart" style={{ fontSize: "50px" }}> <i className="fa fa-bookmark icon-small" aria-hidden={false} /></Link>
                 </div>
             </nav>
-        </div>
+        </motion.div>
     )
 }
 

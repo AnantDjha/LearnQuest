@@ -12,13 +12,13 @@ import aman from "../assets/amanpreet.jpeg"
 import karan from "../assets/karan.jpeg"
 import vishmita from "../assets/vishmita.jpeg"
 import upstox from "../assets/upstops.png"
-import amazon from "../assets/amazon.png"
+import { motion } from "framer-motion"
 
 export default function Team() {
     return (
-        <div className="mainTeam">
+        <div className="mainTeam" >
             <h1>Meet our Team!</h1>
-            <div className="teamDiv">
+            <motion.div className="teamDiv" initial = {{opacity:0 , position:"relative" , top:"10rem"}}  animate={{opacity:1, top:0}} transition={{duration:0.5 , delay:0.18}}>
                 <div className="teamNameCard">
                     <img src={lohikatash} alt="" />
                     <h3>Lohitaksh Gupta</h3>
@@ -68,7 +68,7 @@ export default function Team() {
                     
                 </div>
                 
-            </div>
+            </motion.div>
         </div>
     )
 }
