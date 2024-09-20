@@ -71,6 +71,7 @@ export default function Saved() {
     if (course.length == 0) {
         return (
             <>
+             loading? <Loader/>:
                 <div className="forNav">
 
                 </div>

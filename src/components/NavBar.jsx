@@ -86,10 +86,11 @@ function NavBar() {
                     <Link to="/team" ref={l4}><li className={currentUrl.endsWith("eam") ? "colorKaroBlack" : ''} onClick={handleTop}>Team</li></Link>
                 </ul>
                 <div className="divCart">
-                    <Link to="/login" className="loginToApp"
+                    <Link  className="loginToApp"
                         onClick={()=>{
                            localStorage.setItem("token" , "");
                            setUser({valid :false})
+                           window.location.href = "/login"
                         }}
                     >
                         {user && user.valid ? "logout" : "login"}

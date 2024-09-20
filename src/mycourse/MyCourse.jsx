@@ -64,7 +64,8 @@ export default function MyCourse() {
     if (course.length == 0) {
         return (
             <>
-                <div className="forNav">
+                loading? <Loader/>
+                :<div className="forNav">
 
                 </div>
                 <div className="empty-saved">
