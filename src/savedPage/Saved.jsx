@@ -18,7 +18,7 @@ export default function Saved() {
 
     const getSavedCourse = () => {
         axios.defaults.withCredentials = true
-        axios.get("http://localhost:5000/save", {
+        axios.get("https://learnquest-backend-i922.onrender.com/save", {
             headers:{
             "Authorization": "Bearer " + localStorage.getItem("token")
         }})
@@ -46,7 +46,7 @@ export default function Saved() {
     const handleUnsave = (id) => {
         setLoading(true);
         axios.defaults.withCredentials = true
-        axios.post("http://localhost:5000/save/remove-saved-course", { id: id },
+        axios.post("https://learnquest-backend-i922.onrender.com/save/remove-saved-course", { id: id },
             {
                 headers: { "content-type": "application/json", "Authorization": "Bearer " + localStorage.getItem("token") }
             }

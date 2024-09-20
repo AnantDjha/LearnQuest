@@ -33,7 +33,7 @@ function CompletePayment() {
         }
 
         axios.defaults.withCredentials = true
-        axios.post("http://localhost:5000/razorpay", { amount: price }, {
+        axios.post("https://learnquest-backend-i922.onrender.com/razorpay", { amount: price }, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization" : "Bearer " + localStorage.getItem("token")
@@ -69,7 +69,7 @@ function CompletePayment() {
             "description": "Start your learning journey",
             handler: function (response) {
                 axios.defaults.withCredentials = true;
-                axios.post("http://localhost:5000/course/buy-course", { id: courseId },
+                axios.post("https://learnquest-backend-i922.onrender.com/course/buy-course", { id: courseId },
                     {
                         headers: {
                             "Content-Type": "application/json",

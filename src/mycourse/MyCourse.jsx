@@ -22,7 +22,7 @@ export default function MyCourse() {
     // fetch courses that are purchased
     const getMyCourses = () => {
         axios.defaults.withCredentials = true
-        axios.get("http://localhost:5000/course",{
+        axios.get("https://learnquest-backend-i922.onrender.com/course",{
             headers:{
                 "Authorization" : "Bearer " + localStorage.getItem("token")
             }

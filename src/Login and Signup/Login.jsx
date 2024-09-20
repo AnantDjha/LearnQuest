@@ -31,7 +31,7 @@ export default function Login() {
         setAvailable(false)
         axios.defaults.withCredentials = true;
 
-        axios.post("http://localhost:5000/register/login", data, {
+        axios.post("https://learnquest-backend-i922.onrender.com/register/login", data, {
             headers: {
                 "Content-Type": "application/json",
                 withCredentials: true,
