@@ -39,7 +39,7 @@ export default function Home() {
     opacity: [0, 1],
     position: "relative",
     top: ["10rem", "0"],
-    transition: { duration: 0.5, delay: 0.18 },
+    transition: { duration: 0.45, delay: 0.15 },
   };
 
   // Handles comment submission
@@ -72,9 +72,9 @@ export default function Home() {
   return (
     <div className="mainHome">
       {/* Intro Section */}
-      <motion.div className="intro">
+      <motion.div className="intro" >
         <div className="content" ref={motionRef1}>
-          <motion.div className="heading" animate={controls1}>
+          <motion.div className="heading" animate={controls1} style={{opacity:0}}>
             <h1>Fuel your ambition</h1>
             <h3>
               Make a decision and catalyst your career with Coursify platform by
@@ -140,11 +140,11 @@ export default function Home() {
 
       {/* Video Section */}
       <motion.div className="origin" >
-        <motion.div className="videoContainer" animate={controls4}>
+        <motion.div className="videoContainer" animate={controls4} style={{opacity:0}}>
           <div className="video" >
             <video src={video} controls></video>
           </div>
-          <motion.div className="con" >
+          <motion.div className="con" animate={controls4} style={{opacity:0}}>
             <h1>Discover the Learning</h1>
             <p ref={motionRef4}>
               Discover the future of learning with our online course app. If you
