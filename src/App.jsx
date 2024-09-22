@@ -25,7 +25,6 @@ function App() {
   const { user, setUser } = useContext(userContext)
   const [courseIsBuyed, setCourseIsBuyed] = useState({ courses: [], module: [] });
   const [savedCourses, setSavedCourses] = useState([])
-  const [loading, setLoading] = useState(true);
 
   const getBuyedCourse = () => {
 
@@ -57,10 +56,10 @@ function App() {
     })
       .then((res) => {
         setSavedCourses(res.data.dataArr);
-        setLoading(false)
+       
       })
       .catch((e) => {
-        setLoading(false)
+        
 
         alert("something went wrong" + e)
 
@@ -97,7 +96,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: loading ? <Loader /> : <><Home /><NavBar /><Footer /></>
+      element: <><Home /><NavBar /><Footer /></>
     },
     {
       path: "/team",
