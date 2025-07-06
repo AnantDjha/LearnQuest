@@ -13,7 +13,7 @@ import Loader from "../loader/Loader"
 
 export default function MyCourse() {
 
-    const [loading , setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [course, setCourse] = useState([])
     const [videoNumber, setVideoNumber] = useState([])
     const { user } = useContext(userContext)
@@ -21,10 +21,11 @@ export default function MyCourse() {
 
     // fetch courses that are purchased
     const getMyCourses = () => {
+        setLoading(true)
         axios.defaults.withCredentials = true
-        axios.get("https://learnquest-backend-i922.onrender.com/course",{
-            headers:{
-                "Authorization" : "Bearer " + localStorage.getItem("token")
+        axios.get("http://localhost:5000/course", {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
             }
         })
             .then((res) => {
@@ -44,105 +45,107 @@ export default function MyCourse() {
             .catch((e) => {
                 alert("something went wrong" + e)
                 setLoading(false)
+            }).finally(() => {
+                setLoading(false)
             })
     }
 
     useEffect(() => {
-        if(!user)
-        {
-            navigate("/")
-            navigate("/my-course")
-            
-        }
-        else if (!user?.valid) {
+        const a = localStorage.getItem("user");
+        if (!a || a.length == 0) {
             navigate("/login")
-            return;
+            // navigate("/my-course")
+            return
         }
+        // else if (!user?.valid) {
+        //     navigate("/login")
+        //     return;
+        // }
         getMyCourses()
     }, [])
 
-   
+
     return (
 
-        loading? <Loader/>
-        : 
-        courses.length == 0 ?  <>
-        <div className="forNav">
+        loading ? <Loader />
+            :
+            courses.length == 0 ? <>
+                <div className="forNav">
 
-          </div>
-          <div className="empty-saved">
-              <div>
-                  <h3>No Enrolled courses</h3>
-                  <p>Explore courses and start your learning journey boost your career.</p>
-                  <Link to="/courses">Explore</Link>
-              </div>
-          </div>
-      </>
-        :<div className="mainSaved">
-            <div className="forNav">
-
-            </div>
-            <div className="homeAndName">
-                <p>
-                    <span style={{ marginLeft: "0" }}>
-                        <FontAwesomeIcon icon={faHomeAlt} style={{ fontSize: "14px" }} />
-                    </span>{"/"}
-                    <span>Browse</span> {"/"}
-                    <span>course</span> {"/"}
-                    <span>my courses</span>
-                </p>
-            </div>
-            <div className="contentOfSaved">
-                <div className="savedCourse" style={{ height: "fitContent" }}>
-                    <p className="headingSaved">
-                        <span>My Courses</span>
-                    </p>
-                    {
-                        course.map((item, i) => {
-                            return (
-                                <div className="boxForSaved" key={i} >
-                                    <div className="imageSectionForSaved">
-                                        <img src={item.src} alt="" onClick={() => {
-                                            navigate("/course-detail/" + item.id)
-                                        }} />
-                                    </div>
-                                    <div className="both">
-                                        <div className="textSectionForSaved">
-                                            <h3>{item.name}</h3>
-                                            <span>Skills you will gain: {item.skillToGain}</span>
-                                            <span>
-                                                {item.star} <i className="fa fa-star fa-sm" style={{ color: "rgb(253, 211, 2)" }}></i>
-                                            </span>
-                                            <span>Course type: Beginner</span>
-                                            <span>Duration: 6 months</span>
-                                        </div>
-                                        <div className="progress">
-                                            <div className="dateOfPurchase">
-                                                <span>Date: </span><span>12 - 07 - 2024</span>
-                                            </div>
-                                            <div className="bar">
-                                                <CircularProgressbarWithChildren
-                                                    value={(videoNumber.find(q => q.id == item.id)?.module / item.noOfVideos) * 100}
-                                                    styles={buildStyles({
-                                                        pathColor: '#83638C',
-                                                        trailColor: '#eee'
-                                                    })}
-                                                >
-                                                    <div style={{ marginLeft: "0.3rem", marginBottom: "0.8rem" }}>
-                                                        <strong>{`${parseInt((videoNumber.find(q => q.id == item.id)?.module / item.noOfVideos) * 100)}%`}</strong>
-                                                    </div>
-                                                </CircularProgressbarWithChildren>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
-                    <Link className="footerSaved" to="/courses"><span>Explore More Programs</span></Link>
                 </div>
-            </div>
-        </div>
+                <div className="empty-saved">
+                    <div>
+                        <h3>No Enrolled courses</h3>
+                        <p>Explore courses and start your learning journey boost your career.</p>
+                        <Link to="/courses">Explore</Link>
+                    </div>
+                </div>
+            </>
+                : <div className="mainSaved">
+                    <div className="forNav">
+
+                    </div>
+                    <div className="homeAndName">
+                        <p>
+                            <span style={{ marginLeft: "0" }}>
+                                <FontAwesomeIcon icon={faHomeAlt} style={{ fontSize: "14px" }} />
+                            </span>{"/"}
+                            <span>Browse</span> {"/"}
+                            <span>course</span> {"/"}
+                            <span>my courses</span>
+                        </p>
+                    </div>
+                    <div className="contentOfSaved">
+                        <div className="savedCourse" style={{ height: "fitContent" }}>
+                            <p className="headingSaved">
+                                <span>My Courses</span>
+                            </p>
+                            {
+                                course.map((item, i) => {
+                                    return (
+                                        <div className="boxForSaved" key={i} >
+                                            <div className="imageSectionForSaved">
+                                                <img src={item.src} alt="" onClick={() => {
+                                                    navigate("/course-detail/" + item.id)
+                                                }} />
+                                            </div>
+                                            <div className="both">
+                                                <div className="textSectionForSaved">
+                                                    <h3>{item.name}</h3>
+                                                    <span>Skills you will gain: {item.skillToGain}</span>
+                                                    <span>
+                                                        {item.star} <i className="fa fa-star fa-sm" style={{ color: "rgb(253, 211, 2)" }}></i>
+                                                    </span>
+                                                    <span>Course type: Beginner</span>
+                                                    <span>Duration: 6 months</span>
+                                                </div>
+                                                <div className="progress">
+                                                    <div className="dateOfPurchase">
+                                                        <span>Date: </span><span>12 - 07 - 2024</span>
+                                                    </div>
+                                                    <div className="bar">
+                                                        <CircularProgressbarWithChildren
+                                                            value={(videoNumber.find(q => q.id == item.id)?.module / item.noOfVideos) * 100}
+                                                            styles={buildStyles({
+                                                                pathColor: '#83638C',
+                                                                trailColor: '#eee'
+                                                            })}
+                                                        >
+                                                            <div style={{ marginLeft: "0.3rem", marginBottom: "0.8rem" }}>
+                                                                <strong>{`${parseInt((videoNumber.find(q => q.id == item.id)?.module / item.noOfVideos) * 100)}%`}</strong>
+                                                            </div>
+                                                        </CircularProgressbarWithChildren>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                            <Link className="footerSaved" to="/courses"><span>Explore More Programs</span></Link>
+                        </div>
+                    </div>
+                </div>
     )
 }

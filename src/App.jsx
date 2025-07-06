@@ -29,7 +29,7 @@ function App() {
   const getBuyedCourse = () => {
 
     axios.defaults.withCredentials = true
-    axios.get("https://learnquest-backend-i922.onrender.com/course", {
+    axios.get("http://localhost:5000/course", {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("token")
       }
@@ -49,7 +49,7 @@ function App() {
 
   const getSavedCourse = () => {
     axios.defaults.withCredentials = true
-    axios.get("https://learnquest-backend-i922.onrender.com/save", {
+    axios.get("http://localhost:5000/save", {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("token")
       }
@@ -70,7 +70,7 @@ function App() {
     if (!localStorage.getItem("token")) {
       localStorage.setItem("token", "");
     } axios.defaults.withCredentials = true;
-    axios.get("https://learnquest-backend-i922.onrender.com/session", {
+    axios.get("http://localhost:5000/session", {
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + localStorage.getItem("token")

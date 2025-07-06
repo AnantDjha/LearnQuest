@@ -31,26 +31,26 @@ export default function Login() {
         setAvailable(false)
         axios.defaults.withCredentials = true;
 
-        axios.post("https://learnquest-backend-i922.onrender.com/register/login", data, {
+        axios.post("http://localhost:5000/register/login", data, {
             headers: {
                 "Content-Type": "application/json",
                 withCredentials: true,
-                "Authorization" : "Bearer " + localStorage.getItem("token")
+                "Authorization": "Bearer " + localStorage.getItem("token")
             }
         })
             .then((res) => {
                 if (res.data.user) {
-                    localStorage.setItem("token" , res.data.token)
+                    localStorage.setItem("token", res.data.token)
+                    localStorage.setItem("user", JSON.stringify(res.data.user))
                     setUser(res.data.user)
                 }
                 reset()
                 setAvailable(true)
                 setResultAfterLogin(res.data)
-                setTimeout(()=>{
-                    if(res.data.status)
-                        {
-                           history.back()
-                        }
+                setTimeout(() => {
+                    if (res.data.status) {
+                        history.back()
+                    }
                 }, 1000)
             })
             .catch((e) => {

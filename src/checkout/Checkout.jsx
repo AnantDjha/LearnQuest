@@ -9,30 +9,25 @@ export default function Checkout() {
 
     // windows state that are initialized in entireDetail page 
     const location = useLocation();
-    const { price, courseId} = location.state || {};
+    const { price, courseId } = location.state || {};
 
     const [item, setItem] = useState(courses.find(a => a.id === courseId))
-  
-    const {user} = useContext(userContext);
+
+    const { user } = useContext(userContext);
     const navigate = useNavigate()
 
-   
 
-    useEffect(()=>{
-        if(!user)
-        {
-            navigate("/")
-            navigate("/checkout")
-        }
-        if(!user.valid)
-        {
+
+    useEffect(() => {
+        if (!localStorage.getItem("user")) {
             navigate("/login")
-            
+            return
         }
-        else if(!price || !courseId){
+        else if (!price || !courseId) {
             navigate(-1)
+            return
         }
-    },[price , courseId])
+    }, [price, courseId])
     return (
         <div className="checkout">
             <div className="forNav">
@@ -77,7 +72,7 @@ export default function Checkout() {
                         </ul>
 
 
-                        <span className="checkLink"><p><i>Payable amount</i><b>₹{item.price.toFixed(2)}</b></p> <Link to="/payment-gateway" state={{price , courseId}}>checkout</Link></span>
+                        <span className="checkLink"><p><i>Payable amount</i><b>₹{item.price.toFixed(2)}</b></p> <Link to="/payment-gateway" state={{ price, courseId }}>checkout</Link></span>
                     </div>
                 </div>
             </div>

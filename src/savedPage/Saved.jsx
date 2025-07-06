@@ -10,15 +10,16 @@ import Nothing from "../nothing/Nothing"
 
 export default function Saved() {
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [course, setCourse] = useState([])
     const navigate = useNavigate()
     const [unSave, setUnSave] = useState(null)
     const [saved, setIsSaved] = useState([])
 
     const getSavedCourse = () => {
+        setLoading(true)
         axios.defaults.withCredentials = true
-        axios.get("https://learnquest-backend-i922.onrender.com/save", {
+        axios.get("http://localhost:5000/save", {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }
@@ -41,13 +42,15 @@ export default function Saved() {
             .catch((e) => {
                 console.log(e);
                 setLoading(false);
+            }).finally(() => {
+                setLoading(false)
             })
     }
 
     const handleUnsave = (id) => {
         setLoading(true);
         axios.defaults.withCredentials = true
-        axios.post("https://learnquest-backend-i922.onrender.com/save/remove-saved-course", { id: id },
+        axios.post("http://localhost:5000/save/remove-saved-course", { id: id },
             {
                 headers: { "content-type": "application/json", "Authorization": "Bearer " + localStorage.getItem("token") }
             }
@@ -65,11 +68,17 @@ export default function Saved() {
     }
 
     useEffect(() => {
+        const a = localStorage.getItem("user");
+        if (!a || a.length == 0) {
+            navigate("/login")
+            // navigate("/my-course")
+            return
+        }
         getSavedCourse()
     }, [])
 
 
-  
+
     return (
         loading ? <Loader />
             :

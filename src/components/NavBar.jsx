@@ -73,7 +73,7 @@ function NavBar() {
 
     const ulref = useRef();
     return (
-        <motion.div className="mainNav" ref={navRef}  initial={{top:"-5rem"}} animate={{top:0}} transition={{duration:0.3}}>
+        <motion.div className="mainNav" ref={navRef} initial={{ top: "-5rem" }} animate={{ top: 0 }} transition={{ duration: 0.3 }}>
             <nav>
                 <div className="brand">
                     <img src={menuImg} alt="" onClick={() => handleMenuButton()} />
@@ -86,14 +86,17 @@ function NavBar() {
                     <Link to="/team" ref={l4}><li className={currentUrl.endsWith("eam") ? "colorKaroBlack" : ''} onClick={handleTop}>Team</li></Link>
                 </ul>
                 <div className="divCart">
-                    <Link  className="loginToApp"
-                        onClick={()=>{
-                           localStorage.setItem("token" , "");
-                           setUser({valid :false})
-                           window.location.href = "/login"
+                    <Link className="loginToApp"
+                        onClick={() => {
+                            if (localStorage.getItem("user")) {
+                                localStorage.setItem("token", "");
+                                localStorage.removeItem("user")
+                                setUser({ valid: false })
+                                window.location.href = "/login"
+                            }
                         }}
                     >
-                        {user && user.valid ? "logout" : "login"}
+                        {localStorage.getItem("user") ? "logout" : "login"}
                     </Link>
                     <Link to="/courses-saved" id="cart" style={{ fontSize: "50px" }}> <i className="fa fa-bookmark icon-small" aria-hidden={false} /></Link>
                 </div>

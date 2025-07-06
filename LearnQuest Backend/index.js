@@ -12,8 +12,8 @@ const Razorpay = require("razorpay")
 const app = express();
 app.use(cookie())
 app.use(cors({
-    // origin: "http://localhost:5173",
-    origin: "https://havelearnquest.netlify.app",
+    origin: "http://localhost:5173",
+    // origin: "https://havelearnquest.netlify.app",
     credentials: true,
 }))
 

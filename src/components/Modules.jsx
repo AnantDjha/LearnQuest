@@ -31,7 +31,7 @@ export default function Modules({ modules, courseIsBuyed }) {
 
         axios.defaults.withCredentials = true;
 
-        axios.post("https://learnquest-backend-i922.onrender.com/course/checkTheBox", { value: url, id: parseInt(param.id) },
+        axios.post("http://localhost:5000/course/checkTheBox", { value: url, id: parseInt(param.id) },
             {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
@@ -55,7 +55,7 @@ export default function Modules({ modules, courseIsBuyed }) {
     const getTheChecked = () => {
         axios.defaults.withCredentials = true
 
-        axios.get("https://learnquest-backend-i922.onrender.com/course/getModule" , {
+        axios.get("http://localhost:5000/course/getModule" , {
             headers:{
                 "Authorization" : "Bearer " + localStorage.getItem("token")
             }

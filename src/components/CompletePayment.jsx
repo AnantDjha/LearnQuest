@@ -8,8 +8,8 @@ function CompletePayment() {
     const navigate = useNavigate();
     const { user } = useContext(userContext)
     const location = useLocation();
-    const { price, courseId} = location.state || {};
-    const [loading , setLoading] = useState(true)
+    const { price, courseId } = location.state || {};
+    const [loading, setLoading] = useState(true)
 
 
 
@@ -33,17 +33,17 @@ function CompletePayment() {
         }
 
         axios.defaults.withCredentials = true
-        axios.post("https://learnquest-backend-i922.onrender.com/razorpay", { amount: price }, {
+        axios.post("http://localhost:5000/razorpay", { amount: price }, {
             headers: {
                 "Content-Type": "application/json",
-                "Authorization" : "Bearer " + localStorage.getItem("token")
+                "Authorization": "Bearer " + localStorage.getItem("token")
             }
         })
             .then((res) => {
 
                 // setImformation(res.data);
                 displayRazorPay(res.data)
-                
+
 
             })
             .catch((e) => {
@@ -52,7 +52,7 @@ function CompletePayment() {
             })
 
 
-    }, [price , courseId]);
+    }, [price, courseId]);
 
     async function displayRazorPay(information) {
         const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
@@ -69,11 +69,11 @@ function CompletePayment() {
             "description": "Start your learning journey",
             handler: function (response) {
                 axios.defaults.withCredentials = true;
-                axios.post("https://learnquest-backend-i922.onrender.com/course/buy-course", { id: courseId },
+                axios.post("http://localhost:5000/course/buy-course", { id: courseId },
                     {
                         headers: {
                             "Content-Type": "application/json",
-                            "Authorization" : "Bearer " + localStorage.getItem("token")
+                            "Authorization": "Bearer " + localStorage.getItem("token")
 
                         }
                     }
@@ -109,10 +109,10 @@ function CompletePayment() {
         };
         var rzp1 = new window.Razorpay(options);
 
-      
 
-            rzp1.open();
-        
+
+        rzp1.open();
+
     }
 
     return (

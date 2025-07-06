@@ -28,7 +28,7 @@ export default function Signup() {
     const onSubmit = (data) => {
         setAvailable(false);
         axios.defaults.withCredentials = true;
-        axios.post("https://learnquest-backend-i922.onrender.com/register", data, {
+        axios.post("http://localhost:5000/register", data, {
             headers: {
 
                 "content-type": "application/json",
