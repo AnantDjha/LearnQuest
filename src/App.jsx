@@ -18,7 +18,9 @@ import Foot from './footer/Foot'
 import WildCard from './wildcard/WildCard'
 import Checkout from './checkout/Checkout'
 import CompletePayment from './components/CompletePayment'
-import Loader from './loader/Loader'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -56,10 +58,10 @@ function App() {
     })
       .then((res) => {
         setSavedCourses(res.data.dataArr);
-       
+
       })
       .catch((e) => {
-        
+
 
         alert("something went wrong" + e)
 
@@ -152,6 +154,8 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
+      <ToastContainer />
+
     </>
   )
 }

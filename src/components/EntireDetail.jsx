@@ -11,6 +11,7 @@ import { useAnimation } from "framer-motion"
 import { userContext } from "../context/UserContext"
 import { Link } from "react-router-dom"
 import Loader from "../loader/Loader"
+import { toast } from 'react-toastify';
 
 
 export default function EntireDetail({ courseIsBuyed, savedCourses }) {
@@ -79,7 +80,8 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
 
     const handleSave = async () => {
         if (!user || !user.valid) {
-            navigate("/login")
+            // navigate("/login")
+            toast.error("Please login to save courses!")
             return
         }
         animation.start({
@@ -105,14 +107,14 @@ export default function EntireDetail({ courseIsBuyed, savedCourses }) {
         getSavedCourse()
     }, [savedCourses])
 
-    useEffect(() => {
-        const a = localStorage.getItem("user");
-        if (!a || a.length == 0) {
-            navigate("/login")
-            // navigate("/my-course")
-            return
-        }
-    }, [])
+    // useEffect(() => {
+    //     const a = localStorage.getItem("user");
+    //     if (!a || a.length == 0) {
+    //         navigate("/login")
+    //         // navigate("/my-course")
+    //         return
+    //     }
+    // }, [])
 
     return (
         loading ? <div><Loader /></div>
