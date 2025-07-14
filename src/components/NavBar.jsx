@@ -86,13 +86,13 @@ function NavBar() {
                     <Link to="/team" ref={l4}><li className={currentUrl.endsWith("eam") ? "colorKaroBlack" : ''} onClick={handleTop}>Team</li></Link>
                 </ul>
                 <div className="divCart">
-                    <Link className="loginToApp"
+                    <Link to={"/login"} className="loginToApp"
                         onClick={() => {
                             if (localStorage.getItem("user")) {
                                 localStorage.setItem("token", "");
                                 localStorage.removeItem("user")
                                 setUser({ valid: false })
-                                window.location.href = "/login"
+                                // window.location.href = "/login"
                             }
                         }}
                     >

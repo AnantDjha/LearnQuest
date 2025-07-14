@@ -60,6 +60,12 @@ export default function Login() {
     }
 
 
+    useEffect(() => {
+        if (localStorage.getItem("user")) {
+            navigate(-1)
+            return
+        }
+    }, [])
     return (
         <div className="mainLogin">
             <div className="forNav">
